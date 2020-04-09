@@ -1,0 +1,16 @@
+.dailyCasereport {
+     width: 232px;
+     height : 116px;
+}
+
+.dailyCasereport p , h3 {
+
+    padding : 10%;
+}
+
+
+.dailyCasereportSection {
+    display: flex;
+   justify-content: space-around;
+    
+}

@@ -1,0 +1,17 @@
+.NavBar {
+    display : flex;
+    background-color: #fff;
+    
+
+}
+
+.Navlinks {
+
+    display: flex;
+    flex-grow: 2;
+    
+}
+
+.Logo {
+    flex-grow : 1
+}
