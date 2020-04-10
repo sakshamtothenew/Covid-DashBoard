@@ -9,7 +9,10 @@ class Layout extends Component {
         return(
             <div className = {classes.Layout}>
                 <NavBar />
+                <div className = {classes.Container}>
                 {this.props.children}
+                </div>
+               
             </div>
         )
     }

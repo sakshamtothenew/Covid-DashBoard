@@ -1,16 +1,24 @@
 .dailyCasereport {
-     width: 232px;
-     height : 116px;
+   width : 232px;
+   height : 100px;
+   padding: 10%;
 }
 
-.dailyCasereport p , h3 {
-
-    padding : 10%;
+.dailyCasereport h3 {
+   padding : 5% 5% 0 0
 }
 
+.dailyCasereport p {
+    font-size: 14px;
+}
 
 .dailyCasereportSection {
     display: flex;
-   justify-content: space-around;
+   justify-content: space-between;
     
+}
+
+.Graph {
+    
+    background: transparent url('../../assets/images/Graph.png')  ;
 }

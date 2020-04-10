@@ -6,13 +6,16 @@ import NavLinks from './components/NavBar/NavLinks/NavLinks';
 import Layout from './hoc/Layout/Layout';
 import DynamicStatDate from './components/DynamicStatData/DynamicStatData'
 import Country from './components/CountryData/CountryData'
+import NewsFeed from './components/NewsFeed/NewsFeed'
+import Map from './Map/Map'
 
 function App() {
   return (
    <Layout> 
-     <div>these are rest components</div>
      <DynamicStatDate  />
      <Country />
+   <Map />
+
    </Layout>
   );
 }

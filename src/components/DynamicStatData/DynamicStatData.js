@@ -27,10 +27,12 @@ const DynamicStatData = (props) => {
         return (
             <Card>
                 <div className = {classes.dailyCasereport}>
-                <p>{eachstate}</p>
+                  <div>
+                  <p>{eachstate}</p>
                     <h3>{statData[eachstate]}</h3>
-                </div>
-                    
+                  </div>
+                  <div className = {classes.Graph}></div>
+                 </div>
             </Card>
         )
     })

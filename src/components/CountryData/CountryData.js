@@ -2,6 +2,7 @@ import axios from 'axios'
 import React , { useEffect, useState } from 'react'
 import Card from '../../hoc/Card/Card'
 import classes from './CountryData.module.css'
+import Searchbar from '../UI/SearchBar/Searchbar'
 
 const Country = () => {
 
@@ -10,7 +11,7 @@ const Country = () => {
         axios.get('https://corona.lmao.ninja/countries?sort=country')
         .then((Response) => {
 
-            // console.log(Response.data[0])
+            console.log(Response.data[0].countryInfo.iso2.toLowerCase())
 
            const  OnlyRequiredData  =  Response.data.map((eachCountry) => {
                 return {TotalAffected : eachCountry.cases , 
@@ -31,16 +32,23 @@ const Country = () => {
             return (
                 
                     <Card>
-                        <h4>{eachCountry.countryName}</h4>
-                        <p>totalAffected : {eachCountry.TotalAffected}</p>
-                        <p>TotalRecovered : {eachCountry.TotalRecovered}</p>
+                        <div className = {classes.CountryInfo}>
                         <img className = {classes.Img} src = {eachCountry.flag} alt = "countryflag" />
+                          <h4>{eachCountry.countryName}</h4>
+                        </div>
+                        <div className = {classes.Statistics}>
+                        <p>TotalAffected : {eachCountry.TotalAffected}</p>
+                        <p> | </p>
+                        <p> TotalRecovered : {eachCountry.TotalRecovered}</p>
+                        </div>
+                      
                     </Card>
             
             )
 
      })
         return (   <div className = {classes.CountryDiv}> <Card>
+            <Searchbar />
  {CountryWiseData}
 </Card> </div>)
 
