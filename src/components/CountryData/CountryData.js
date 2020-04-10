@@ -6,7 +6,7 @@ import Searchbar from '../UI/SearchBar/Searchbar'
 
 const Country = () => {
 
-    const [countryData , setCountrydata] = useState([])
+    const [countryData , setCountrydata] = useState({SearchedCountries : [] ,AllCountries : [] })
      useEffect(()=> {
         axios.get('https://corona.lmao.ninja/countries?sort=country')
         .then((Response) => {
@@ -21,17 +21,40 @@ const Country = () => {
 
            
             })
-            setCountrydata(OnlyRequiredData);
+            setCountrydata({SearchedCountries : OnlyRequiredData  , AllCountries : OnlyRequiredData});
 
         })
 
      } , [])
 
+     function titleCase(str) {
+        var splitStr = str.toLowerCase().split(' ');
+        for (var i = 0; i < splitStr.length; i++) {
+          
+            splitStr[i] = splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1);     
+        }
+        return splitStr.join(' '); 
+     }
+
+     
      console.log(countryData)
-     const CountryWiseData = countryData.map((eachCountry) => {
+     const OnSearchFilterHandler = (event) => {
+            
+           const searchedValue = titleCase(event.target.value);
+           const currStateData = countryData.AllCountries;
+           const filteredCountries = currStateData.filter((eachCountry) => {
+
+                return eachCountry.countryName.includes(searchedValue);
+           })
+           setCountrydata({SearchedCountries : filteredCountries , AllCountries : currStateData});
+             
+     }
+     const CountryWiseData = countryData.SearchedCountries.map((eachCountry) => {
             return (
                 
                     <Card>
+                        
+
                         <div className = {classes.CountryInfo}>
                         <img className = {classes.Img} src = {eachCountry.flag} alt = "countryflag" />
                           <h4>{eachCountry.countryName}</h4>
@@ -41,6 +64,7 @@ const Country = () => {
                         <p> | </p>
                         <p> TotalRecovered : {eachCountry.TotalRecovered}</p>
                         </div>
+                        
                       
                     </Card>
             
@@ -48,7 +72,7 @@ const Country = () => {
 
      })
         return (   <div className = {classes.CountryDiv}> <Card>
-            <Searchbar />
+            <Searchbar  searchFilterHandler = {OnSearchFilterHandler} />
  {CountryWiseData}
 </Card> </div>)
 

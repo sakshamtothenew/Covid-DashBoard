@@ -13,6 +13,7 @@
     border : none ;
     outline : none;
     font-size: larger;
+    width : 80%
 }
 .InnerSearchbar::placeholder {
     color : #37373c;

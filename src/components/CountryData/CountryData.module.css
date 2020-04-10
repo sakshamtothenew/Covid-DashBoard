@@ -1,13 +1,14 @@
 .CountryDiv {
-     width : 30%; 
-
     overflow-y: scroll;
-    height : 500px;
-    
+    height : 410px;
+    width : 350px;
+    margin : 2% 0;
+
 }
  
 .CountryDiv :first-child {
-    padding : 1%
+    padding : 1%;
+    margin : 2% 0;
 }
 
 .Img {
