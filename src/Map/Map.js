@@ -15,10 +15,7 @@ const Map = (props) => {
 
   useEffect(() => {
 
-    axios.get('https://pomber.github.io/covid19/timeseries.json')
-      .then((Response) => {
-        console.log(Response.data)
-      })
+  
     axios.get('https://corona.lmao.ninja/countries?sort=country')
       .then((Response) => {
         const data = Response.data.map((eachCountry) => {
@@ -44,7 +41,7 @@ const Map = (props) => {
     },
     colorAxis: {
       min: 0,
-      stops: [[0.07, '#f6c7c6'], [0.3, '#ed7575'], [0.5, '#ea453d']]
+      stops: [[0.04, '#f6c7c6'], [0.08, '#ed7575'], [0.1 , '#FF797D'] , [0.5, '#ea453d']]
     },
 
 

@@ -1,0 +1,26 @@
+.SelectedBtn {
+    background-color: #52586A;
+    color : #fff;
+    height : 30px;
+    width : 86px;
+    border : none;
+    border-radius : 3px;   
+    outline: none;
+}
+
+.Btn {
+    background-color: #F5F5F5;
+    color : #30313A;
+    height : 30px;
+    width : 86px;
+    border : none;
+    outline: none;
+}
+
+.SpreadHeader {
+    display: flex;
+    justify-content: space-between;
+}
+.SpreadHeader h4 {
+    padding : 1%
+}
