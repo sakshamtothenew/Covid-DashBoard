@@ -12,7 +12,7 @@ class NavBar extends Component {
                <div className = {classes.Logo}>
                    <Logo />
                </div>
-               <div className = {classes.Navlinks}>
+               <div className = {classes.Navlink}>
                <NavLinks>home </NavLinks>
                 <NavLinks>Faq</NavLinks>
                 <NavLinks>HelpFul links</NavLinks>

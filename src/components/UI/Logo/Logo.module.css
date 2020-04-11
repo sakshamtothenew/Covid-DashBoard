@@ -1,0 +1,12 @@
+.Logo  {
+    display: flex;
+    padding: 2% 3% 2% 5%;
+    align-items: center;
+}
+
+.Logo h2 {
+
+    padding-left : 10px;
+    color : #FF0019;
+    font-size: 22px;
+}

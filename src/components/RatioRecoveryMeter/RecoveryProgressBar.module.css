@@ -1,0 +1,40 @@
+.ProgressBar {
+
+    height : 320px;
+    width :   260px;
+
+    padding : 0  2% 0 4%;
+    text-align:  center;
+}
+
+.ProgressBar h3 {
+    padding : 10% 0; 
+}
+.ProgressChart {
+
+    padding : 5% 0 ;
+    background-color : #F5F5F5;
+    height : 189px;
+    width : 189px;
+    border-radius: 50%;
+    display : flex;
+    justify-content: center;
+    align-items: center;
+    margin : auto;
+
+}
+
+.AnalogData {
+    padding : 5% 0 ;
+}
+
+.PercentIndicator {
+    height : 103px;
+    width : 103px;
+    margin : auto;
+    background-color : #fff;
+    border-radius : 50%;
+    display : flex;
+    justify-content: center;
+    align-items: center;
+}

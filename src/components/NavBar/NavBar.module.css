@@ -5,12 +5,14 @@
 
 }
 
-.Navlinks {
+.Navlink {
 
     display: flex;
     flex-grow: 2;
+
     
 }
+
 
 .Logo {
     flex-grow : 1
