@@ -50,7 +50,7 @@ const SpreadTrends = (props) => {
 
         <Card>
             <LineChart width={448} height={151} data={data}>
-                <YAxis tick={{ fontSize: "12px" }} />
+                <YAxis tick={{ fontSize: "12px" }} orientation="right"  />
                 <Tooltip />
                 <Line type="monotone" dataKey="confirmedCases" stroke="#FF0019" strokeWidth={0.7} />
                 <XAxis dataKey="date" tick={{ fontSize: "12px" }} />
