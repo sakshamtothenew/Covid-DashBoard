@@ -4,8 +4,7 @@ import {
 } from 'recharts';
 import Card from '../../hoc/Card/Card'
 import classes from './SpreadTrends.module.css'
-import Highcharts from 'highcharts/highstock';
-import HighchartsReact from 'highcharts-react-official';
+
 import axios from 'axios'
 
 const SpreadTrends = (props) => {
@@ -13,11 +12,11 @@ const SpreadTrends = (props) => {
 
     const [GraphData, setGraphData] = useState([])
 
-    const [graphType , setGraphType] = useState("Affected")
+    const [graphType, setGraphType] = useState("Affected")
 
-    const [buttonState , setButtonsState] = useState([{id : 1 , flag : true , name : "Affected"} ,
-                                                     {id : 2 , flag :  false , name : "Recovered"} ,
-                                                             {id : 3 , flag : false , name : "Deaths"}])
+    const [buttonState, setButtonsState] = useState([{ id: 1, flag: true, name: "Affected" },
+    { id: 2, flag: false, name: "Recovered" },
+    { id: 3, flag: false, name: "Deaths" }])
 
     useEffect(() => {
         axios.get('https://pomber.github.io/covid19/timeseries.json')
@@ -53,52 +52,50 @@ const SpreadTrends = (props) => {
     const graphChangeHandler = (id) => {
         const btnState = [...buttonState];
         console.log(btnState);
-           for(let i in buttonState)
-           {
-               if(buttonState[i].id == id)
-               {
-                   setGraphType(buttonState[i].name)
-                   btnState[i].flag = true;
-                   
-               }
-               else {
+        for (let i in buttonState) {
+            if (buttonState[i].id == id) {
+                setGraphType(buttonState[i].name)
+                btnState[i].flag = true;
+
+            }
+            else {
                 btnState[i].flag = false;
 
-               }
-           }
-           setButtonsState(btnState);
+            }
+        }
+        setButtonsState(btnState);
 
     }
 
     const buttons = buttonState.map((eachButton) => {
-         let id  = eachButton.id
-          
-        return(
-            <button  className = {eachButton.flag ? classes.SelectedBtn : classes.Btn}
-            onClick = {() => graphChangeHandler(id)}>{eachButton.name}</button>
+        let id = eachButton.id
+
+        return (
+            <button className={eachButton.flag ? classes.SelectedBtn : classes.Btn}
+                onClick={() => graphChangeHandler(id)}>{eachButton.name}</button>
         )
     })
 
     const data = GraphData;
-    
+
     return (
 
         <Card>
             <div>
-                <div className = {classes.SpreadHeader}>
+                <div className={classes.SpreadHeader}>
                     <h4>Spread Trends</h4>
                     <div>
-                    {buttons}
+                        {buttons}
                     </div>
                 </div>
-            <LineChart width={448} height={151} data={data}>
-                <YAxis tick={{ fontSize: "12px" }} orientation="right"  />
-                <Tooltip />
-                <Line type="monotone" dot = {false} dataKey={graphType} stroke="#FF0019" strokeWidth={2} />
-                <XAxis dataKey="date" tick={{ fontSize: "12px" }} />
-            </LineChart>
+                <LineChart width={448} height={151} data={data}>
+                    <YAxis tick={{ fontSize: "12px" }} orientation="right" padding = {{bottom : 10}} />
+                    <Tooltip />
+                    <Line type="monotone" dot={false} dataKey={graphType} stroke="#FF0019" strokeWidth={2} />
+                    <XAxis dataKey="date" tick={{ fontSize: "12px" }} padding = {{right : 5}} />
+                </LineChart>
             </div>
-           
+
         </Card>
     )
 }

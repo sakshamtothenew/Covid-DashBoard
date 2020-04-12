@@ -73,8 +73,10 @@ const Country = () => {
         )
 
     })
-    return (<div className={classes.CountryDiv}> <Card>
+    return (<div className={classes.CountryDiv}> 
+    <Card>
         <Searchbar searchFilterHandler={OnSearchFilterHandler} />
+    
         {CountryWiseData}
     </Card> </div>)
 

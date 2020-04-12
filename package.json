@@ -10,6 +10,7 @@
     "highcharts": "^8.0.4",
     "highcharts-react-official": "^3.0.0",
     "react": "^16.13.1",
+    "react-circular-progressbar": "^2.0.3",
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.1",
     "recharts": "^1.8.5"

@@ -15,21 +15,21 @@ import SpreadTrends from './components/SpreadTrends/SpreadTrends';
 function App() {
   return (
     <Layout>
-      <main className = {classes.MainContainer}>
-        <article className = {classes.MainBody}>
-        <DynamicStatDate />
-        <div className={classes.CountryDetailSection}>
-          <Country />
-          <Map />
-        </div>
-         <div>
-          <SpreadTrends />
-         </div>
+      <main className={classes.MainContainer}>
+        <article className={classes.MainBody}>
+          <DynamicStatDate />
+          <div className={classes.CountryDetailSection}>
+            <Country />
+            <Map />
+          </div>
+          <div>
+            <SpreadTrends />
+          </div>
         </article>
-        <aside className = {classes.SideBody}>
-           <RecoveryBar />
+        <aside className={classes.SideBody}>
+          <RecoveryBar />
         </aside>
-       
+
       </main>
 
 

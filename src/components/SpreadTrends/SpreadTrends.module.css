@@ -21,6 +21,8 @@
     display: flex;
     justify-content: space-between;
 }
+
 .SpreadHeader h4 {
-    padding : 1%
+
+    margin : 1%
 }

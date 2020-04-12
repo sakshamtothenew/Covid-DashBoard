@@ -32,9 +32,17 @@
     height : 103px;
     width : 103px;
     margin : auto;
-    background-color : #fff;
-    border-radius : 50%;
-    display : flex;
-    justify-content: center;
-    align-items: center;
+color : #222222;
 }
+
+.pt {
+
+    text-align: center;
+    margin : auto 4%;
+    
+ }
+
+ .pt h3 {
+
+    padding : 2% 0 ;
+ }
