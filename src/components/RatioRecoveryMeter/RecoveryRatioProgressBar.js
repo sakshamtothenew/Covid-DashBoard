@@ -6,20 +6,22 @@ import { RadialBarChart, PolarAngleAxis, RadialBar } from 'recharts'
 import axios from 'axios'
 const RecoveryBar = (props) => {
 
-    const [RecoveryRatio , setRecoveryRatio] = useState({bar : [{name : 'recoveryRate' , value : 0}] , statData : 0})
-    useEffect(()=> {
-        axios.post('https://api.thevirustracker.com/free-api?global=stats')
-        .then((Response) => {
-            console.log(Response.data)
+    const [RecoveryRatio, setRecoveryRatio] = useState({ bar: [{ name: 'recoveryRate', value: 0 }], statData: 0 })
+    useEffect(() => {
 
-          const totalCases = Response.data.results[0].total_cases;
-          const Recovered = Response.data.results[0].total_recovered;
-           const ratio  = parseInt((Recovered/totalCases)*100);
+      
+        axios.get('https://api.thevirustracker.com/free-api?global=stats')
+            .then((Response) => {
+                console.log(Response.data)
+
+                const totalCases = Response.data.results[0].total_cases;
+                const Recovered = Response.data.results[0].total_recovered;
+                const ratio = parseInt((Recovered / totalCases) * 100);
                 console.log(Response.data);
-           setRecoveryRatio({bar : [{name : 'recoveryRate' , value : ratio}] , statData : Recovered})
-           
-        })
-    } , [])
+                setRecoveryRatio({ bar: [{ name: 'recoveryRate', value: ratio }], statData: Recovered })
+
+            })
+    }, [])
 
 
     const data = RecoveryRatio.bar;
@@ -29,59 +31,59 @@ const RecoveryBar = (props) => {
 
     const circleSize = 250;
     return (
-        <div className = {classes.pt}>
-        <Card>
-           
-            <h3>Ratio of Recovery</h3>
+        <div className={classes.pt}>
+            <Card>
 
-<RadialBarChart
-    width={circleSize}
-    height={circleSize}
-    cx={circleSize / 2}
-    cy={circleSize / 2}
-    innerRadius={90}
-    outerRadius={100}
-    barSize={3}
-    data={data}
-    startAngle={90}
+                <h3>Ratio of Recovery</h3>
 
-    endAngle={-270} >
+                <RadialBarChart
+                    width={circleSize}
+                    height={circleSize}
+                    cx={circleSize / 2}
+                    cy={circleSize / 2}
+                    innerRadius={90}
+                    outerRadius={100}
+                    barSize={3}
+                    data={data}
+                    startAngle={90}
 
-    <PolarAngleAxis
-        type="number"
-        domain={[0, 100]}
-        angleAxisId={0}
-        tick={false}
-        style = {{backgroundColor : "#999999"}}
+                    endAngle={-270} >
 
-    />
-    <RadialBar
+                    <PolarAngleAxis
+                        type="number"
+                        domain={[0, 100]}
+                        angleAxisId={0}
+                        tick={false}
+                        style={{ backgroundColor: "#999999" }}
 
-        clockWise
-        dataKey="value"
-        cornerRadius={circleSize / 2}
-        fill="#82ca9d"
+                    />
+                    <RadialBar
+                        background
+                        clockWise
+                        dataKey="value"
+                        cornerRadius={circleSize / 2}
+                        fill="#82ca9d"
 
-    />
-  
-       
-        <text className = {classes.PercentIndicator}
-    
-        x={circleSize / 2}
-        y={circleSize / 2}
-        textAnchor="middle"
-        dominantBaseline="middle">{data[0].value}%</text>
-       
-  
-</RadialBarChart>
+                    />
 
 
-<div className={classes.AnalogData}>
-    <p>{RecoveryRatio.statData} Recovered</p>
-</div>
-          
-           
-        </Card>
+                    <text className={classes.PercentIndicator}
+
+                        x={circleSize / 2}
+                        y={circleSize / 2}
+                        textAnchor="middle"
+                        dominantBaseline="middle">{data[0].value}%</text>
+
+
+                </RadialBarChart>
+
+
+                <div className={classes.AnalogData}>
+                    <p>{RecoveryRatio.statData} Recovered</p>
+                </div>
+
+
+            </Card>
         </div>
     )
 }

@@ -11,6 +11,7 @@ import Map from './Map/Map'
 import classes from './App.module.css';
 import RecoveryBar from './components/RatioRecoveryMeter/RecoveryRatioProgressBar';
 import SpreadTrends from './components/SpreadTrends/SpreadTrends';
+import Tweets from './components/Tweets/Tweets';
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
         </article>
         <aside className={classes.SideBody}>
           <RecoveryBar />
+          <Tweets />
         </aside>
 
       </main>
