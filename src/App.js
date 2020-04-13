@@ -23,8 +23,9 @@ function App() {
             <Country />
             <Map />
           </div>
-          <div>
+          <div className = {classes.SocialInfo}>
             <SpreadTrends />
+            <NewsFeed />
           </div>
         </article>
         <aside className={classes.SideBody}>

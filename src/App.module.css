@@ -7,3 +7,10 @@
 .MainContainer {
     display: flex;
 }
+
+.SocialInfo {
+  display: flex;
+  justify-content: space-between;
+}
+
+

@@ -1,0 +1,39 @@
+.NewsFeed {
+   width : 500px
+}
+
+.Container {
+
+    display:  flex;
+    
+}
+
+.NewsImage {
+
+    padding : 3.5%;
+}
+
+.newsButton {
+    position : relative ;
+     left : 50%;
+     width : 135px;
+     height : 45px; 
+     margin-top : 10%;
+     background-color: #FFEAEB;
+     color : #FF0019;
+     font-size:  13px;
+     font-weight : 900;
+     border-radius : 4px;
+     border : none;
+     outline : none;
+}
+
+.Content h2 {
+
+    font-size : 20px;
+}
+.Content {
+  
+    padding : 1% 2% 1% 2.5%;
+    width : 100%;
+}
