@@ -6,19 +6,19 @@ import { RadialBarChart, PolarAngleAxis, RadialBar } from 'recharts'
 import axios from 'axios'
 const RecoveryBar = (props) => {
 
-    const [RecoveryRatio, setRecoveryRatio] = useState({ bar: [{ name: 'recoveryRate', value: 0 }], statData: 0 })
+    const [RecoveryRatio, setRecoveryRatio] = useState({  percentage: 0 , statData: 0 })
     useEffect(() => {
 
-      
-        axios.get('https://api.thevirustracker.com/free-api?global=stats')
+
+        axios.get('https://corona.lmao.ninja/all')
             .then((Response) => {
                 console.log(Response.data)
 
-                const totalCases = Response.data.results[0].total_cases;
-                const Recovered = Response.data.results[0].total_recovered;
-                const ratio = parseInt((Recovered / totalCases) * 100);
+                const totalCases = Response.data.cases;
+                const Recovered = Response.data.recovered;
+                const ratio = ((Recovered / totalCases) * 100).toFixed(1);
                 console.log(Response.data);
-                setRecoveryRatio({ bar: [{ name: 'recoveryRate', value: ratio }], statData: Recovered })
+                setRecoveryRatio({  percentage : ratio , statData: Recovered })
 
             })
     }, [])
@@ -28,57 +28,26 @@ const RecoveryBar = (props) => {
     console.log(data);
     console.log(RecoveryRatio);
 
-
-    const circleSize = 250;
+    const percent = 565 - (565 * RecoveryRatio.percentage)/100;
+    
+    
     return (
         <div className={classes.pt}>
             <Card>
 
                 <h3>Ratio of Recovery</h3>
 
-                <RadialBarChart
-                    width={circleSize}
-                    height={circleSize}
-                    cx={circleSize / 2}
-                    cy={circleSize / 2}
-                    innerRadius={90}
-                    outerRadius={100}
-                    barSize={3}
-                    data={data}
-                    startAngle={90}
-
-                    endAngle={-270} >
-
-                    <PolarAngleAxis
-                        type="number"
-                        domain={[0, 100]}
-                        angleAxisId={0}
-                        tick={false}
-                        style={{ backgroundColor: "#999999" }}
-
-                    />
-                    <RadialBar
-                        background
-                        clockWise
-                        dataKey="value"
-                        cornerRadius={circleSize / 2}
-                        fill="#82ca9d"
-
-                    />
-
-
-                    <text className={classes.PercentIndicator}
-
-                        x={circleSize / 2}
-                        y={circleSize / 2}
-                        textAnchor="middle"
-                        dominantBaseline="middle">{data[0].value}%</text>
-
-
-                </RadialBarChart>
-
-
-                <div className={classes.AnalogData}>
+                <div className={classes.ProgressBar}>
+                  
+                    <svg className = {classes.ProgressSvg}>
+                        <circle className={classes.ProgressBar_path} cx="50%" cy="50%" r="90px"></circle>
+                        <circle className={classes.ProgressBar_thumb} style = {{strokeDashoffset : percent }}cx="50%" cy="50%" r="90px"></circle>
+                       
+                    </svg>
+                    <div className = {classes.AnalogData}>{RecoveryRatio.percentage}%</div>
+                </div>
+ 
+                <div>
                     <p>{RecoveryRatio.statData} Recovered</p>
                 </div>
 

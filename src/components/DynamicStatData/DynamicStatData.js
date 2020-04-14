@@ -8,15 +8,15 @@ const DynamicStatData = (props) => {
 
 
     useEffect(() => {
-        axios.get('https://api.thevirustracker.com/free-api?global=stats')
-            .then((response) => {
-                console.log(response.data.results)
-                const receivedCaseData = response.data.results[0];
+        axios.get("https://corona.lmao.ninja/all")
+            .then((Response) => {
+                console.log(Response.data)
+                const receivedCaseData = Response.data
                 setStateData({
-                    TotalCase: receivedCaseData["total_cases"],
-                    TotalRecoved: receivedCaseData["total_recovered"],
-                    TotalDeath: receivedCaseData["total_deaths"],
-                    TotalActive: receivedCaseData["total_active_cases"]
+                    TotalCase: receivedCaseData["cases"],
+                    TotalRecoved: receivedCaseData["todayCases"],
+                    TotalDeath: receivedCaseData["deaths"],
+                    TotalActive: receivedCaseData["active"]
                 })
 
             })
@@ -38,7 +38,7 @@ const DynamicStatData = (props) => {
     })
 
     return (
-        <div className = {classes.dailyCasereportSection}> {dailyCasereport}</div>
+        <div className = {classes.dailyCasereportSection}>{dailyCasereport}</div>
     )
 }
 

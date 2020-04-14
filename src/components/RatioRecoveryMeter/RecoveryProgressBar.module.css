@@ -1,15 +1,11 @@
 .ProgressBar {
 
-    height : 320px;
-    width :   260px;
-
-    padding : 0  2% 0 4%;
+    height : 220px;
+    width :  250px;
+    margin: 0 auto;
     text-align:  center;
 }
 
-.ProgressBar h3 {
-    padding : 10% 0; 
-}
 .ProgressChart {
 
     padding : 5% 0 ;
@@ -25,8 +21,19 @@
 }
 
 .AnalogData {
-    padding : 5% 0 ;
-}
+     position : relative;
+    width : 100px; height : 100px;
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50% ;
+     top  : -74%;
+     left : 30%;
+    font-size : 23px;
+    font-weight : medium;
+    box-shadow: 0px 0px 22px hsla(165, 63%, 50%, 0.15);
+    }
 
 .PercentIndicator {
     height : 103px;
@@ -45,4 +52,40 @@ color : #222222;
  .pt h3 {
 
     padding : 2% 0 ;
+ }
+
+ .ProgressSvg {
+
+    width : 100%;
+    height : 100%;
+ }
+
+ circle {
+     stroke-dasharray: 565;
+     stroke-dashoffset: 565;
+
+ }
+
+ .ProgressBar_path {
+
+    fill : #F5F5F5;
+    stroke : transparent;
+    stroke-width: 3px;
+ }
+ .ProgressBar_thumb {
+
+    fill : transparent;
+     stroke-width : 5px;
+     stroke : rgba(111, 214, 136, 0.918);
+     /* stroke-dashoffset: calc(565 - (565 * 50)/100) ;; */
+      stroke-linecap: round;
+   
+      transform:  rotate(-90deg);
+      transform-origin: 50% 50% ;
+ }
+
+ .percentage {
+
+    fill : white;
+    box-shadow: 1px 1px 1px green;
  }
