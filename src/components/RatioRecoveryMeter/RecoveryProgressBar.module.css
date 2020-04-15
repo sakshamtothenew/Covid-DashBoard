@@ -30,8 +30,9 @@
     border-radius: 50% ;
      top  : -74%;
      left : 30%;
-    font-size : 23px;
-    font-weight : medium;
+    font-size : 24px;
+    color : #30313A;
+    font-weight : bold;
     box-shadow: 0px 0px 22px hsla(165, 63%, 50%, 0.15);
     }
 

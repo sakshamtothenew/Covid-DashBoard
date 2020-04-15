@@ -62,3 +62,8 @@
     height : 343px;
     margin-top : 2%;
 }
+
+.CountryList::-webkit-scrollbar-track {
+    width: 6px;
+    background-color: #F5F5F5;
+}
