@@ -1,22 +1,18 @@
 .OuterTweetsBox {
 
-        margin : 4% auto;
-        width : 93%;
-
         border-radius : 8px;
         padding : 5% 0;
-        height : 438px;
-        
-        
-
-}
+        height :  438px;        
+        width : 90%;
+        margin : auto;
+    }
 .OuterTweetsBox h4 {
     padding : 2% 0 3% 3% ;
 }
 
 .InnerTweetBox {
 
-    height : 375px;
+    height : 400px;
     overflow-y : scroll;
     padding : 7% 0 0 0;
 }

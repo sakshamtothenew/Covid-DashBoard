@@ -15,14 +15,27 @@ const DynamicStatData = (props) => {
                 console.log(Response.data)
                 const receivedCaseData = Response.data
                 setStateData({
-                    TotalCase: receivedCaseData["cases"],
-                    TotalRecoved: receivedCaseData["todayCases"],
-                    TotalDeath: receivedCaseData["deaths"],
-                    TotalActive: receivedCaseData["active"]
+                    TotalCase: addCommas(receivedCaseData["cases"]),
+                    TotalRecoved: addCommas(receivedCaseData["recovered"]),
+                    TotalDeath: addCommas(receivedCaseData["deaths"]),
+                    TotalActive: addCommas(receivedCaseData["active"])
                 })
 
             })
     }, [])
+
+    function addCommas(nStr){
+        nStr += '';
+        var x = nStr.split('.');
+        var x1 = x[0];
+        var x2 = x.length > 1 ? '.' + x[1] : '';
+        var rgx = /(\d+)(\d{3})/;
+        while (rgx.test(x1)) {
+         x1 = x1.replace(rgx, '$1' + ',' + '$2');
+        }
+        return x1 + x2;
+       }
+
     const renderState = Object.keys(statData) 
     const dailyCasereport = renderState.map((eachstate) => {
 

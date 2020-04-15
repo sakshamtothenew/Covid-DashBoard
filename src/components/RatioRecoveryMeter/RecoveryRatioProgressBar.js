@@ -6,7 +6,7 @@ import { RadialBarChart, PolarAngleAxis, RadialBar } from 'recharts'
 import axios from 'axios'
 const RecoveryBar = (props) => {
 
-    const [RecoveryRatio, setRecoveryRatio] = useState({  percentage: 0 , statData: 0 })
+    const [RecoveryRatio, setRecoveryRatio] = useState({  percentage: 0 , statData: 0 , Cases : 0})
     useEffect(() => {
 
 
@@ -18,12 +18,15 @@ const RecoveryBar = (props) => {
                 const Recovered = Response.data.recovered;
                 const ratio = ((Recovered / totalCases) * 100).toFixed(1);
                 console.log(Response.data);
-                setRecoveryRatio({  percentage : ratio , statData: Recovered })
+                setRecoveryRatio({  percentage : ratio , statData: kFormatter(Recovered) , Cases : kFormatter(totalCases)})
 
             })
     }, [])
 
-
+   
+    function kFormatter(num) {
+        return Math.abs(num) > 999 ? Math.sign(num) * ((Math.abs(num) / 1000).toFixed(1)) + 'k' : Math.sign(num) * Math.abs(num)
+    }
     const data = RecoveryRatio.bar;
     console.log(data);
     console.log(RecoveryRatio);
@@ -35,7 +38,7 @@ const RecoveryBar = (props) => {
         <div className={classes.pt}>
             <Card>
 
-                <h3>Ratio of Recovery</h3>
+                <h4>Ratio of Recovery</h4>
 
                 <div className={classes.ProgressBar}>
                   
@@ -47,7 +50,9 @@ const RecoveryBar = (props) => {
                     <div className = {classes.AnalogData}>{RecoveryRatio.percentage}%</div>
                 </div>
  
-                <div>
+                <div className = {classes.Statistics}>
+                    <p>{RecoveryRatio.Cases} Affected</p>
+                    <p>|</p>
                     <p>{RecoveryRatio.statData} Recovered</p>
                 </div>
 

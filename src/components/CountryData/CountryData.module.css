@@ -59,6 +59,6 @@
 
 .CountryList {
     overflow-y: scroll;
-    height : 345px;
-    margin : 2% 0;
+    height : 343px;
+    margin-top : 2%;
 }

@@ -32,13 +32,13 @@ const Map = (props) => {
   const mapOptions = {
 
     chart: {
-      backgroundColor: "rgba(251, 246, 246, 1)" , 
+      backgroundColor: "#fbf6f6", 
     height : 350,
-     borderRadius : "8px",
+     borderRadius : 8,
      width : 550
   },
     title: {
-      text: "Covid-19",
+      text: "",
     },
     mapNavigation: {
       enabled: true,
@@ -66,11 +66,11 @@ const Map = (props) => {
 
     <div className={classes.Map}>
       <div className = {classes.title}>
-        <h3>Covid Affected Areas</h3>
+        <h4>COVID-19 Affected Areas</h4>
         <div className = {classes.leager}>
-        <div style = {{height : "10px" , width : "10px" , backgroundColor : "#f6c7c6" }}></div>
+        <div style = {{height : "15px" ,borderRadius: "3px", width : "15px" , backgroundColor : "#f6c7c6" }}></div>
         <p>Least affected</p>
-        <div style = {{height : "10px" , width : "10px" , backgroundColor : "#ea453d" }}></div>
+        <div style = {{height : "15px" ,borderRadius: "3px", width : "15px" , backgroundColor : "#ea453d" }}></div>
         <p>Most affected</p>
         </div>
        

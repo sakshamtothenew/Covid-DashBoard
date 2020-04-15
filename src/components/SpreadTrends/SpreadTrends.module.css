@@ -15,11 +15,13 @@
     width : 86px;
     border : none;
     outline: none;
+    border-radius: 3px;
 }
 
 .SpreadHeader {
     display: flex;
     justify-content: space-between;
+    padding : 2% 2%;
 }
 
 .SpreadHeader h4 {

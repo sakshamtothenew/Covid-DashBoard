@@ -39,6 +39,7 @@ const NewsFeed = (props) => {
     return (
         <div className={classes.NewsFeed}>
             <Card>
+                <div className = {classes.title}><span>News and Updates</span></div>
                 <div className={classes.Container}>
                     <div className={classes.NewsImage}>
                         <img src={Personimage} alt="news icon" />
