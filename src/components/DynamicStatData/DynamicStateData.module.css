@@ -1,26 +1,28 @@
 .dailyCasereport {
    width : 232px;
-   height : 100px;
-   padding: 10%;
+   height : 100%;
+   padding: 10% 5%;
    margin : 2% 0;
-
+    display: flex;
+    justify-content: space-around;
 }
-
+.dailyCasereport Card {
+    display: flex;
+    justify-content : center;
+    align-items : center;
+}
 .dailyCasereport h3 {
-   padding : 5% 5% 0 0
+   padding : 5% 5% 0 0;
+   font-size : 24px;
 }
 
 .dailyCasereport p {
     font-size: 14px;
+    font-weight : 600;
 }
 
 .dailyCasereportSection {
     display: flex;
    justify-content: space-between;
     
-}
-
-.Graph {
-    
-    background: transparent url('../../assets/images/Graph.png')  ;
 }

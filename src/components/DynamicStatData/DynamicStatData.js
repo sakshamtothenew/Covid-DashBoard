@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import Card from '../../hoc/Card/Card'
 import classes from './DynamicStateData.module.css';
+import  graph1 from  '../../assets/images/gp.png'
+import Up from '../../assets/images/Up.png'
 const DynamicStatData = (props) => {
 
     const [statData, setStateData] = useState({});
@@ -21,17 +23,19 @@ const DynamicStatData = (props) => {
 
             })
     }, [])
-    const renderState = Object.keys(statData)
+    const renderState = Object.keys(statData) 
     const dailyCasereport = renderState.map((eachstate) => {
 
         return (
             <Card>
                 <div className = {classes.dailyCasereport}>
                   <div>
-                  <p>{eachstate}</p>
+                  <p>{eachstate} <img src = {Up} /></p>
                     <h3>{statData[eachstate]}</h3>
                   </div>
-                  <div className = {classes.Graph}></div>
+                  <div className = {classes.Graph}>
+                      <img src = {graph1} />
+                  </div>
                  </div>
             </Card>
         )

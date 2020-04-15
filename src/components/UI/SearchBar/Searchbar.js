@@ -9,7 +9,7 @@ const Searchbar = (props) => {
       <form>
           <div className = {classes.Searchbar}>
           <i className="fa fa-search" aria-hidden="true"></i>
-      <input   onChange = {props.searchFilterHandler} placeholder = "Search Country" className = {classes.InnerSearchbar} />
+      <input   onChange = {props.searchFilterHandler} placeholder = "Search Location" className = {classes.InnerSearchbar} />
           </div>
     
 

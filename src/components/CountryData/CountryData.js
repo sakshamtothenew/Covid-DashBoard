@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import Card from '../../hoc/Card/Card'
 import classes from './CountryData.module.css'
 import Searchbar from '../UI/SearchBar/Searchbar'
-
+import down from '../../assets/images/Down.png'
 const Country = () => {
 
     const [countryData, setCountrydata] = useState({ SearchedCountries: [], AllCountries: [] })
@@ -15,8 +15,8 @@ const Country = () => {
 
                 const OnlyRequiredData = Response.data.map((eachCountry) => {
                     return {
-                        TotalAffected: eachCountry.cases,
-                        TotalRecovered: eachCountry.recovered,
+                        TotalAffected: kFormatter(eachCountry.cases),
+                        TotalRecovered: kFormatter(eachCountry.recovered),
                         flag: eachCountry.countryInfo.flag,
                         countryName: eachCountry.country
                     }
@@ -27,7 +27,12 @@ const Country = () => {
 
             })
 
+
     }, [])
+
+    function kFormatter(num) {
+        return Math.abs(num) > 999 ? Math.sign(num) * ((Math.abs(num) / 1000).toFixed(1)) + 'k' : Math.sign(num) * Math.abs(num)
+    }
 
     function titleCase(str) {
         var splitStr = str.split(' ');
@@ -53,32 +58,50 @@ const Country = () => {
     }
     const CountryWiseData = countryData.SearchedCountries.map((eachCountry) => {
         return (
+            <div className={classes.eachOuterCard}>
+                <Card>
 
-            <Card>
+                    <div className={classes.eachCard}>
+                        <div>
+                            <div className={classes.CountryInfo}>
+                                <img className={classes.Img} src={eachCountry.flag} alt="countryflag" />
+                                <h4>{eachCountry.countryName}</h4>
+                            </div>
+                            <div className={classes.Statistics}>
+                                <p>{eachCountry.TotalAffected} Affected</p>
+                                <p> | </p>
+                                <p>{eachCountry.TotalRecovered} Recovered</p>
+                            </div>
+
+                        </div>
+                        <div className = {classes.Arrows}>
+                            <img src = {down} />
+                        </div>
+                    </div>
 
 
-                <div className={classes.CountryInfo}>
-                    <img className={classes.Img} src={eachCountry.flag} alt="countryflag" />
-                    <h4>{eachCountry.countryName}</h4>
-                </div>
-                <div className={classes.Statistics}>
-                    <p>TotalAffected : {eachCountry.TotalAffected}</p>
-                    <p> | </p>
-                    <p> TotalRecovered : {eachCountry.TotalRecovered}</p>
-                </div>
 
+                </Card>
 
-            </Card>
+            </div>
+
 
         )
 
     })
-    return (<div className={classes.CountryDiv}> 
-    <Card>
-        <Searchbar searchFilterHandler={OnSearchFilterHandler} />
-    
-        {CountryWiseData}
-    </Card> </div>)
+    return (<div className={classes.CountryDiv}>
+        <Card>
+            <div className={classes.InnerCard}>
+                <div className={classes.searchbar}>
+                    <Searchbar searchFilterHandler={OnSearchFilterHandler} />
+                </div>
+                <div className={classes.CountryList}>
+                    {CountryWiseData}
+                </div>
+            </div>
+
+
+        </Card> </div>)
 
 }
 

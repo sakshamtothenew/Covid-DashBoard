@@ -5,7 +5,7 @@ import HighchartsReact from 'highcharts-react-official';
 import mapDataWorld from './mapDataWorld'
 import getDataArray from './countryCod'
 import classes from './Map.module.css';
-import Card from '../hoc/Card/Card';
+import Card from '../../hoc/Card/Card';
 
 const Map = (props) => {
 
@@ -30,6 +30,13 @@ const Map = (props) => {
 
   console.log(countryWiseData)
   const mapOptions = {
+
+    chart: {
+      backgroundColor: "rgba(251, 246, 246, 1)" , 
+    height : 350,
+     borderRadius : "8px",
+     width : 550
+  },
     title: {
       text: "Covid-19",
     },
@@ -58,8 +65,19 @@ const Map = (props) => {
   return (
 
     <div className={classes.Map}>
+      <div className = {classes.title}>
+        <h3>Covid Affected Areas</h3>
+        <div className = {classes.leager}>
+        <div style = {{height : "10px" , width : "10px" , backgroundColor : "#f6c7c6" }}></div>
+        <p>Least affected</p>
+        <div style = {{height : "10px" , width : "10px" , backgroundColor : "#ea453d" }}></div>
+        <p>Most affected</p>
+        </div>
+       
+      </div>
       <div className={classes.innerMap}>
-        <HighchartsReact
+        <HighchartsReact 
+        style = {{backgoundColor : "green"}}
           options={mapOptions}
           constructorType={'mapChart'}
           highcharts={Highcharts}

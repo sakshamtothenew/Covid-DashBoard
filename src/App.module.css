@@ -1,7 +1,8 @@
 .CountryDetailSection {
 
   display : flex;
-  justify-content: space-evenly;
+  
+  margin : 2% 0;
 }
 
 .MainContainer {
@@ -12,5 +13,4 @@
   display: flex;
   justify-content: space-between;
 }
-
 

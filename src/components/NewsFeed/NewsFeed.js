@@ -3,24 +3,39 @@ import axios from 'axios'
 import classes from './NewsFeed.module.css'
 import Personimage from '../../assets/images/newsFeed.png'
 import Card from '../../hoc/Card/Card'
+import { data } from './Local_response'
 const NewsFeed = (props) => {
 
     const [newsArticles, setnewsArticles] = useState({ headline: "", description: "", ArticleLink: "" })
-
+   
+    // setnewsArticles({ headline: headline, description: description, ArticleLink: pageUrl })
     useEffect(() => {
-        axios.get('http://newsapi.org/v2/top-headlines?q=COVID&country=in&apiKey=519fb8fba3fe442ab5bdda7c5a3042ef')
-            .then((Response) => {
+        // axios.get('Local_response.json')
+        //     .then((Response) => {
 
-                console.log(Response.data)
-                const newsContent = { ...Response.data.articles[0] };
-                const headline = newsContent.title.slice(0, 60)
-                const description = newsContent.description.slice(0, 70);
-                const pageUrl = newsContent.url;
+        //         console.log(Response.data)
+        //         const newsContent = { ...Response.data.articles[0] };
+        //         const headline = newsContent.title.slice(0, 60)
+        //         const description = newsContent.description.slice(0, 70);
+        //         const pageUrl = newsContent.url;
 
-                setnewsArticles({ headline: headline, description: description, ArticleLink: pageUrl })
+        //         setnewsArticles({ headline: headline, description: description, ArticleLink: pageUrl })
 
-            })
-    } , [])
+        //     })
+
+        console.log(data);
+        const newsContent = { ...data.articles[0] };
+        const headline = newsContent.title.slice(0, 60)
+        const description = newsContent.description.slice(0, 70);
+        const pageUrl = newsContent.url;
+
+        setnewsArticles({ headline: headline, description: description, ArticleLink: pageUrl })
+    }, [])
+
+
+
+
+
     return (
         <div className={classes.NewsFeed}>
             <Card>

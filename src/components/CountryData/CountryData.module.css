@@ -1,19 +1,11 @@
 .CountryDiv {
-    overflow-y: scroll;
     height : 410px;
-    width : 350px;
-    margin : 2% 0;
-
+    width : 350px; 
 }
  
-.CountryDiv :first-child {
-    padding : 1%;
-    margin : 2% 0;
-}
-
 .Img {
- width : 15%;
- border-radius: 2px;
+ width : 10%;
+ border-radius: 3px;
  
 }
 
@@ -22,26 +14,51 @@
   color : #66676e
     
 }
-.CountryDiv :first-child {
-    padding : 2%
+
+.InnerCard {
+    padding : 2%;
 }
 
 
 .CountryInfo {
-    display : flex;
-    align-items: center;
+   display : flex;
+   padding : 2% ;  
+   align-items: center;
 
 }
 
 .CountryInfo h4 {
-    padding-left : 2% 
+   margin-left : 2%;
 }
 
+.eachOuterCard {
+    margin : 3% 2%;
+}
 
-.Statistics {
+.Arrows {
+    margin-right : 2%;
+}
+.eachCard {
+    padding : 3% 3%;
     display: flex;
-    justify-content: start;
-    padding : 0 0 2% 1%;
-    align-items: baseline;
+    align-items : center;
+}
+.Statistics :nth-child(2)
+{
+    margin : 0 2%;
+}
+.Statistics {
+   
+    display: flex;
+    padding : 0 0 2% 2%;
+    font-weight : bold;
+}
+.searchbar {
+    padding : 2% 0;
 }
 
+.CountryList {
+    overflow-y: scroll;
+    height : 345px;
+    margin : 2% 0;
+}
