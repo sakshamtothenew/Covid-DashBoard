@@ -4,6 +4,8 @@ import Card from '../../hoc/Card/Card'
 import classes from './DynamicStateData.module.css';
 import  graph1 from  '../../assets/images/gp.png'
 import Up from '../../assets/images/Up.png'
+import Down from '../../assets/images/Down.png'
+import greenGraph from '../../assets/images/greenGraph.png'
 const DynamicStatData = (props) => {
 
     const [statData, setStateData] = useState({});
@@ -18,10 +20,32 @@ const DynamicStatData = (props) => {
                     TotalCase: addCommas(receivedCaseData["cases"]),
                     TotalRecoved: addCommas(receivedCaseData["recovered"]),
                     TotalDeath: addCommas(receivedCaseData["deaths"]),
-                    TotalActive: addCommas(receivedCaseData["active"])
+                    TotalActive: addCommas(receivedCaseData["active"]) , 
+                    difference : 0
                 })
 
             })
+
+            let interval = setInterval(()=> {
+                axios.get("https://corona.lmao.ninja/all")
+                .then((Response) => {
+                    console.log(Response.data)
+                    const receivedCaseData = Response.data
+                    setStateData((state) => {
+                        const diff = (receivedCaseData["cases"] - state.TotalCase) - state.diff;
+                      return   {
+                        TotalCase: addCommas(receivedCaseData["cases"]),
+                        TotalRecoved: addCommas(receivedCaseData["recovered"]),
+                        TotalDeath: addCommas(receivedCaseData["deaths"]),
+                        TotalActive: addCommas(receivedCaseData["active"]),
+                        difference : diff 
+                        }
+                    })
+    
+                })
+            } , (5*60000))
+
+            return () => clearInterval(interval);
     }, [])
 
     function addCommas(nStr){
@@ -38,16 +62,16 @@ const DynamicStatData = (props) => {
 
     const renderState = Object.keys(statData) 
     const dailyCasereport = renderState.map((eachstate) => {
-
+        if(eachstate!="difference")
         return (
             <Card>
                 <div className = {classes.dailyCasereport}>
                   <div>
-                  <p>{eachstate} <img src = {Up} /></p>
+                  <p>{eachstate} <img src = {statData["difference"]>=0 ? Up : Down} /></p>
                     <h3>{statData[eachstate]}</h3>
                   </div>
                   <div className = {classes.Graph}>
-                      <img src = {graph1} />
+                      <img src = {statData["difference"] >=0? graph1 : greenGraph} />
                   </div>
                  </div>
             </Card>

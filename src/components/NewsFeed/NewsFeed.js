@@ -6,7 +6,7 @@ import Card from '../../hoc/Card/Card'
 import { data } from './Local_response'
 const NewsFeed = (props) => {
 
-    const [newsArticles, setnewsArticles] = useState({ headline: "", description: "", ArticleLink: "", articleid: 0 })
+    const [newsArticles, setnewsArticles] = useState({ headline: "Stay home , stay safe ", description: "we'll keep you updated", ArticleLink: "", articleid: 0 })
 
     // setnewsArticles({ headline: headline, description: description, ArticleLink: pageUrl })
     useEffect(() => {
@@ -31,7 +31,7 @@ const NewsFeed = (props) => {
                 let headline;
                 let description;
                 if (newsContent.title == null)
-                    headline = "no headline provided"
+                    headline = "Stay Home , Stay safe"
                 else {
                     if (newsContent.title.length > 60)
                         headline = newsContent.title.slice(0, 60)
@@ -41,7 +41,7 @@ const NewsFeed = (props) => {
                 }
 
                 if (newsContent.description == null)
-                    description = "no description provided"
+                    description = "we'll keep you updated"
                 else {
                     if (newsContent.description.length > 70)
                         description = newsContent.description.slice(0, 70)

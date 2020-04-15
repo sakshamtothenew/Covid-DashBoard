@@ -63,7 +63,14 @@
     margin-top : 2%;
 }
 
+.CountryList::-webkit-scrollbar {
+    width: 5px;
+  }
 .CountryList::-webkit-scrollbar-track {
-    width: 6px;
-    background-color: #F5F5F5;
-}
+    background: #f1f1f1;
+    border-radius: 5px;
+  }
+.CountryList::-webkit-scrollbar-thumb {
+    background-color: #78ca97; 
+    border-radius: 10px;
+  }
