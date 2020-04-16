@@ -6,29 +6,18 @@ import mapDataWorld from './mapDataWorld'
 import getDataArray from './countryCod'
 import classes from './Map.module.css';
 import Card from '../../hoc/Card/Card';
+import {useSelector , useDispatch } from 'react-redux'
+import  * as actions from '../../store/actions/index'
+const Map = () => {
 
-const Map = (props) => {
-
-  require('highcharts/modules/map')(Highcharts);
-
-  const [countryWiseData, setCountriwiseData] = useState([])
-
-  useEffect(() => {
+ require('highcharts/modules/map')(Highcharts);
+ 
+const  dispatch = useDispatch();
+const  mapData =  useSelector(state => state.countryWiseData.MapData)
+const getCountryData = () => dispatch(actions.getCountryWiseData())
+  
 
   
-    axios.get('https://corona.lmao.ninja/countries?sort=country')
-      .then((Response) => {
-        const data = Response.data.map((eachCountry) => {
-          let str = new String(eachCountry.countryInfo.iso2)
-          return [str.toLowerCase(), eachCountry.cases]
-        })
-
-        setCountriwiseData(data)
-
-      })
-  }, [])
-
-  console.log(countryWiseData)
   const mapOptions = {
 
     chart: {
@@ -56,11 +45,11 @@ const Map = (props) => {
       {
         mapData: mapDataWorld,
         name: 'World',
-        data: countryWiseData
+        data: mapData
       }
     ]
   };
-  console.log(countryWiseData)
+  
 
   return (
 

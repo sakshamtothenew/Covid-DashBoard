@@ -4,35 +4,20 @@ import Card from '../../hoc/Card/Card'
 import classes from './CountryData.module.css'
 import Searchbar from '../UI/SearchBar/Searchbar'
 import down from '../../assets/images/Down.png'
+import {useSelector , useDispatch } from 'react-redux'
+import  * as actions from '../../store/actions/index'
 const Country = () => {
 
-    const [countryData, setCountrydata] = useState({ SearchedCountries: [], AllCountries: [] })
+    const SearchedCountries = useSelector(state => state.countryWiseData.SearchedCountries)
+    const AllCountries = useSelector(state => state.countryWiseData.AllCountries)
+    const dispatch = useDispatch();
+
+    const getCountryData = () => dispatch(actions.getCountryWiseData())
+    const updateSearchedCountries = (SearchedCountries) => dispatch(actions.updateSearchedCountries(SearchedCountries))
     useEffect(() => {
-        axios.get('https://corona.lmao.ninja/countries?sort=country')
-            .then((Response) => {
-
-                console.log(Response.data[0].countryInfo.iso2.toLowerCase())
-
-                const OnlyRequiredData = Response.data.map((eachCountry) => {
-                    return {
-                        TotalAffected: kFormatter(eachCountry.cases),
-                        TotalRecovered: kFormatter(eachCountry.recovered),
-                        flag: eachCountry.countryInfo.flag,
-                        countryName: eachCountry.country
-                    }
-
-
-                })
-                setCountrydata({ SearchedCountries: OnlyRequiredData, AllCountries: OnlyRequiredData });
-
-            })
-
-
+                getCountryData()
     }, [])
 
-    function kFormatter(num) {
-        return Math.abs(num) > 999 ? Math.sign(num) * ((Math.abs(num) / 1000).toFixed(1)) + 'k' : Math.sign(num) * Math.abs(num)
-    }
 
     function titleCase(str) {
         var splitStr = str.split(' ');
@@ -48,15 +33,15 @@ const Country = () => {
     const OnSearchFilterHandler = (event) => {
 
         const searchedValue = titleCase(event.target.value);
-        const currStateData = countryData.AllCountries;
+        const currStateData = AllCountries;
         const filteredCountries = currStateData.filter((eachCountry) => {
 
             return eachCountry.countryName.includes(searchedValue);
         })
-        setCountrydata({ SearchedCountries: filteredCountries, AllCountries: currStateData });
+       updateSearchedCountries(filteredCountries);
 
     }
-    const CountryWiseData = countryData.SearchedCountries.map((eachCountry) => {
+    const CountryWiseData = SearchedCountries.map((eachCountry) => {
         return (
             <div className={classes.eachOuterCard}>
                 <Card>
