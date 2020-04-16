@@ -12,6 +12,21 @@ export const setAllStats = (StatisticalData) => {
 }
 
 
+export const autoupdateStat = () => {
+
+    return dispatch => {
+        setInterval(()=> {
+            axios.get('https://corona.lmao.ninja/all')
+            .then(Response => {
+                console.log("auto update called")
+                 dispatch(setAllStats(Response));     
+            })
+        } , 5*60000)
+       
+    }
+}
+
+
 export const getAllStats = () => {
 
     return dispatch => {
@@ -20,6 +35,7 @@ export const getAllStats = () => {
         .then(Response => {
             console.log(Response.data)
              dispatch(setAllStats(Response));
+             dispatch(autoupdateStat());
         })
     }
 }
