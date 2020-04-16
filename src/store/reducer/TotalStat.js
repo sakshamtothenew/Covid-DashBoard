@@ -7,7 +7,9 @@ const initialState = {
      ActiveCases : 0 , 
      Deaths : 0 , 
      percentage : 0,
-     difference : 0
+     difference : 0 , 
+     TCFormatted : 0,
+     RFormatted : 0
      
 }
 
@@ -22,6 +24,10 @@ function addCommas(nStr){
     }
     return x1 + x2;
    }
+
+   function kFormatter(num) {
+     return Math.abs(num) > 999 ? Math.sign(num) * ((Math.abs(num) / 1000).toFixed(1)) + 'k' : Math.sign(num) * Math.abs(num)
+ }
 
 const reducer = (state = initialState , action) => {
 
@@ -38,7 +44,9 @@ const reducer = (state = initialState , action) => {
             ActiveCases: addCommas(receivedCaseData["active"]) , 
             Deaths: addCommas(receivedCaseData["deaths"]),
             percentage :  ((Recovered / totalCases) * 100).toFixed(1),
-            difference : 0
+            difference : 0 ,
+            TCFormatted : kFormatter(receivedCaseData["cases"]),
+            RFormatted : kFormatter(receivedCaseData["recovered"])
         }
 
         default: 

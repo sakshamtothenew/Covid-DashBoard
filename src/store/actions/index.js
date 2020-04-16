@@ -7,3 +7,7 @@ export {
 getAllStats
 }
 from './TotalStat'
+
+export {
+ getGraphData
+} from './spreadTrends'

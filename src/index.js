@@ -8,10 +8,11 @@ import thunk from 'redux-thunk'
 import { Provider } from 'react-redux'
 import CountryWisReducer from './store/reducer/CountryWiseData'
 import TotalStat from './store/reducer/TotalStat'
-
+import  spreadTrends from './store/reducer/spreadTrends'
 const rootReducer = combineReducers({
   countryWiseData: CountryWisReducer ,
-  TotalStat : TotalStat
+  TotalStat : TotalStat , 
+  SpreadTrends : spreadTrends
 })
 const Enhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 const store = createStore(rootReducer, Enhancers(
