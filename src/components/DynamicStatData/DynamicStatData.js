@@ -7,6 +7,7 @@ import Up from '../../assets/images/Up.png'
 import Down from '../../assets/images/Down.png'
 import greenGraph from '../../assets/images/greenGraph.png'
 import { useSelector, useDispatch } from 'react-redux'
+import { Area, AreaChart, Tooltip, linearGradient, XAxis } from 'recharts'
 import * as actions from '../../store/actions/index'
 const DynamicStatData = (props) => {
 
@@ -15,52 +16,74 @@ const DynamicStatData = (props) => {
         TotalCases: useSelector(state => state.TotalStat.TotalCases),
         ActiveCases: useSelector(state => state.TotalStat.ActiveCases),
         Recovered: useSelector(state => state.TotalStat.Recovered),
-        Deaths: useSelector(state => state.TotalStat.Deaths)
+        Deaths: useSelector(state => state.TotalStat.Deaths),
+
     }
+    const timelineData = useSelector(state => state.SpreadTrends.GraphData);
 
-     const dispatch = useDispatch();
+    const slicedData = timelineData.slice(-10)
 
-     const getAllStats = () => dispatch(actions.getAllStats());
+    const editedData = slicedData.map((o) => {
+
+        return {
+            date: o.date,
+            TotalCases: o.Affected,
+            Recovered: o.Recovered,
+            Deaths: o.Deaths,
+            ActiveCases: o.Affected - (o.Recovered + o.Deaths)
+        }
+    })
+    console.log(editedData);
+    console.log(slicedData);
+
+    const dispatch = useDispatch();
+
+    const getAllStats = () => dispatch(actions.getAllStats());
 
     useEffect(() => {
-         getAllStats()
+        getAllStats()
 
-        // let interval = setInterval(()=> {
-        //     axios.get("https://corona.lmao.ninja/all")
-        //     .then((Response) => {
-        //         console.log(Response.data)
-        //         const receivedCaseData = Response.data
-        //         setStateData((state) => {
-        //             const diff = (receivedCaseData["cases"] - state.TotalCase) - state.diff;
-        //           return   {
-        //             TotalCase: addCommas(receivedCaseData["cases"]),
-        //             TotalRecoved: addCommas(receivedCaseData["recovered"]),
-        //             TotalDeath: addCommas(receivedCaseData["deaths"]),
-        //             TotalActive: addCommas(receivedCaseData["active"]),
-        //             difference : diff 
-        //             }
-        //         })
-
-        //     })
-        // } , (5*60000))
-
-        // return () => clearInterval(interval);
     }, [])
-
-
 
     const renderState = Object.keys(statData)
     const dailyCasereport = renderState.map((eachstate) => {
+
         if (eachstate != "difference")
             return (
                 <Card>
                     <div className={classes.dailyCasereport}>
                         <div>
-                            <p>{eachstate} <img src={statData["difference"] >= 0 ? Up : Down} /></p>
+                            <p>{eachstate} <img src={2 > 1 ? Up : Down} /></p>
                             <h3>{statData[eachstate]}</h3>
                         </div>
                         <div className={classes.Graph}>
-                            <img src={statData["difference"] >= 0 ? graph1 : greenGraph} />
+                            {/* <img src={statData["difference"] >= 0 ? graph1 : greenGraph} /> */}
+                            <AreaChart width={72} height={60} data={editedData}>
+                                <Tooltip viewBox={{ width: 100, height: 100 }} />
+                                <defs>
+                                    <linearGradient id="colorGreen" x1="0" y1="0" x2="0" y2="1">
+                                        <stop offset="0%" stopColor="#06BA90" stopOpacity={0.8} />
+                                        <stop offset="60%" stopColor="#06BA90" stopOpacity={0} />
+                                    </linearGradient>
+                                    <linearGradient id="colorRed" x1="0" y1="0" x2="0" y2="1">
+                                        <stop offset="5%" stopColor="#FF6C75" stopOpacity={0.8} />
+                                        <stop offset="60%" stopColor="#FF6C75" stopOpacity={0} />
+                                    </linearGradient>
+                                </defs>
+                                <Area
+                                    type="linear"
+                                    dataKey={eachstate}
+                                    stroke={eachstate === "Recovered" ? "#06BA90" : "#FF6C75"}
+                                    strokeWidth={3}
+                                    dot={false}
+                                    fill={
+                                        eachstate === "Recovered"
+                                            ? "url(#colorGreen)"
+                                            : "url(#colorRed)"
+                                    }
+                                />
+                                <XAxis dataKey="date" hide={true} />
+                            </AreaChart>
                         </div>
                     </div>
                 </Card>

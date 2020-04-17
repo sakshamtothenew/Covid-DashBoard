@@ -1,0 +1,18 @@
+.CountryDetailSection {
+
+    display : flex;
+    
+    margin : 2% 0;
+  }
+  
+  .MainContainer {
+      display: flex;
+      justify-content: space-between;
+  }
+  
+  .SocialInfo {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  

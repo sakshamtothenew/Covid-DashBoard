@@ -23,7 +23,8 @@ const reducer = (state = initialState, action) => {
                     TotalAffected: kFormatter(eachCountry.cases),
                     TotalRecovered: kFormatter(eachCountry.recovered),
                     flag: eachCountry.countryInfo.flag,
-                    countryName: eachCountry.country
+                    countryName: eachCountry.country,
+                    todayCases: eachCountry.todayCases
                 }
             })
 

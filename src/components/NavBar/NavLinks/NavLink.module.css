@@ -11,8 +11,3 @@
     color : #52586A;
     text-decoration: none;
 }
-
-.NavLinks a:active {
-    height : 100%;
-    color: #FF0019;
-}

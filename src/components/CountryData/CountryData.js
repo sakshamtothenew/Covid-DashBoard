@@ -4,6 +4,7 @@ import Card from '../../hoc/Card/Card'
 import classes from './CountryData.module.css'
 import Searchbar from '../UI/SearchBar/Searchbar'
 import down from '../../assets/images/Down.png'
+import Up from '../../assets/images/Up.png'
 import {useSelector , useDispatch } from 'react-redux'
 import  * as actions from '../../store/actions/index'
 const Country = () => {
@@ -15,6 +16,7 @@ const Country = () => {
     const getCountryData = () => dispatch(actions.getCountryWiseData())
     const updateSearchedCountries = (SearchedCountries) => dispatch(actions.updateSearchedCountries(SearchedCountries))
     useEffect(() => {
+        console.log("this Countrydata called")
                 getCountryData()
     }, [])
 
@@ -60,7 +62,7 @@ const Country = () => {
 
                         </div>
                         <div className = {classes.Arrows}>
-                            <img src = {down} />
+                            <img src = {eachCountry.todayCases>0 ? Up : down} />
                         </div>
                     </div>
 

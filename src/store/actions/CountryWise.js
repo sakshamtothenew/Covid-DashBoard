@@ -23,7 +23,7 @@ export const getCountryWiseData = () => {
 
     return dispatch => {
 
-        axios.get('https://corona.lmao.ninja/countries?sort=country')
+        axios.get('https://corona.lmao.ninja/v2/countries?sort=country')
             .then(Response => {
 
                 dispatch(setCountriesData(Response));

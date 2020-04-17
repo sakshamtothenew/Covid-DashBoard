@@ -12,31 +12,27 @@ import classes from './App.module.css';
 import RecoveryBar from './components/RatioRecoveryMeter/RecoveryRatioProgressBar';
 import SpreadTrends from './components/SpreadTrends/SpreadTrends';
 import Tweets from './components/Tweets/Tweets';
+import Home from './containers/Home/Home'
+import Faq from './containers/Faq/Faq'
+import HelpfulLinks from './containers/HelpfulLinks/HelpfulLinks'
+import { Route, Switch, Redirect } from 'react-router-dom'
+import { ReactFragment } from 'react'
+import Aux from './hoc/Aux/Aux';
+
 
 function App() {
+
+  let route = (
+     <Switch>
+  <Route path='/' exact component={Home} />
+      <Route path='/Faq' component={Faq} />
+      <Route path='/helpfulLink' component={HelpfulLinks} />
+      <Redirect to='/' />
+     </Switch>
+  )
   return (
     <Layout>
-      <main className={classes.MainContainer}>
-        <article className={classes.MainBody}>
-          <DynamicStatDate />
-          <div className={classes.CountryDetailSection}>
-            <Country />
-            <Map />
-          </div>
-          <div className = {classes.SocialInfo}>
-            <SpreadTrends />
-            <NewsFeed />
-          </div>
-        </article>
-        <aside className={classes.SideBody}>
-          <RecoveryBar />
-          <Tweets />
-        </aside>
-
-      </main>
-
-
-
+      {route}
     </Layout>
   );
 }

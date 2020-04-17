@@ -13,9 +13,9 @@ class NavBar extends Component {
                    <Logo />
                </div>
                <div className = {classes.Navlink}>
-               <NavLinks>home </NavLinks>
-                <NavLinks>Faq</NavLinks>
-                <NavLinks>HelpFul links</NavLinks>
+               <NavLinks  exact link = '/'>home </NavLinks>
+                <NavLinks link = '/Faq'>Faq</NavLinks>
+                <NavLinks link = '/helpfulLink'>HelpFul links</NavLinks>
                </div>
               
            </header>
