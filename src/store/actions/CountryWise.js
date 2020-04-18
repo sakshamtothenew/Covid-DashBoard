@@ -14,10 +14,29 @@ export const setCountriesData = (CountryData) => {
 export const updateSearchedCountries = (searchedCountriesData) => {
 
     return {
-        type : actionType.UPDATE_SEARCHED_COUNTRIES , 
-         SearchedCountries : searchedCountriesData
+        type: actionType.UPDATE_SEARCHED_COUNTRIES,
+        SearchedCountries: searchedCountriesData
     }
-} 
+}
+
+export const autoUpdateCountriesData = () => {
+    return dispatch => {
+        setInterval(() => {
+            axios.get('https://corona.lmao.ninja/v2/countries?sort=country')
+                .then(Response => {
+
+                    dispatch(setCountriesData(Response));
+
+                })
+                .catch(err => {
+                    console.log(err)
+                })
+        }, 2 * 60 * 60000)
+
+    }
+
+}
+
 
 export const getCountryWiseData = () => {
 
@@ -27,7 +46,7 @@ export const getCountryWiseData = () => {
             .then(Response => {
 
                 dispatch(setCountriesData(Response));
-
+                dispatch(autoUpdateCountriesData())
             })
             .catch(err => {
                 console.log(err)
