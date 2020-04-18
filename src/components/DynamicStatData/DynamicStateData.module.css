@@ -1,28 +1,62 @@
 .dailyCasereport {
-   width : 222px;
-   height : 100%;
-   padding: 10% 5%;
+   padding: 10% 7%;
    margin : 2% 0;
     display: flex;
     justify-content: space-around;
+    max-width: 100%;
 }
-.dailyCasereport Card {
-    display: flex;
-    justify-content : center;
-    align-items : center;
-}
+
 .dailyCasereport h3 {
-   padding : 5% 5% 0 0;
+   padding : 10% 10% 0 0;
    font-size : 24px;
 }
 
 .dailyCasereport p {
-    font-size: 14px;
+    font-size: 13px;
     font-weight : 600;
+    
 }
 
 .dailyCasereportSection {
     display: flex;
-   justify-content: space-between;
+    flex-wrap: wrap;
+   justify-content: space-between
     
+}
+
+.eachCard {
+    flex-grow: 0;
+    flex-basis : 23%;
+}
+
+.Graph {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  
+}
+
+@media only screen and (max-width : 960px)
+{
+    .eachCard {
+        flex-basis : 48%;
+    }
+}
+
+
+@media only screen and (max-width : 550px)
+{
+    .eachCard {
+        flex-basis : 100%;
+    }
+
+.dailyCasereport h3 {
+    font-size : 35px;
+ }
+
+.dailyCasereport p {
+    font-size: 20px;
+  
+}
+
 }

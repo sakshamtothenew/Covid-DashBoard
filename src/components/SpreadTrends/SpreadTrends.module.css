@@ -17,6 +17,10 @@
     outline: none;
     border-radius: 3px;
 }
+.spreadContent {
+    max-width : 100%;
+    max-height: 100%;
+}
 
 .SpreadHeader {
     display: flex;
@@ -27,4 +31,67 @@
 .SpreadHeader h4 {
     font-weight: 900;
     margin : 1%
+}
+
+@media only screen and (max-width : 1262px) {
+
+    .SpreadTrend {
+        flex-basis: 49%;
+    }
+} 
+
+
+@media only screen and (max-width : 930px) {
+
+    .SpreadTrend {
+        flex-basis: 100%;
+        margin : 2% auto;
+    }
+    .Graph {
+        width : 50%;
+        margin : 0 auto;
+        zoom: 125%;
+    }
+}
+
+@media only screen and (max-width : 660px) {
+
+    .SpreadTrend {
+        flex-basis : 100%;
+    }
+     
+    .Graph      {
+       zoom : 80%;
+    }
+}
+
+
+@media only screen and (max-width : 550px) {
+
+  
+     
+    .Graph      {
+       zoom : 70%;
+    }
+}
+
+
+@media only screen and (max-width : 450px) {
+
+  
+     
+    .Graph      {
+       zoom : 60%;
+    }
+
+    .SelectedBtn {
+        height : 25px;
+        width  : 66px;
+        font-size: 11px;
+    }
+    .Btn {
+        height : 25px;
+        width : 66px;
+        font-size: 11px;
+    }
 }

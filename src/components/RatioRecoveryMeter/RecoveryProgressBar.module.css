@@ -1,7 +1,7 @@
 .ProgressBar {
 
     height : 220px;
-    width :  250px;
+    width :  300px;
     margin: auto;
     text-align:  center;
 }
@@ -29,7 +29,7 @@
     align-items: center;
     border-radius: 50% ;
      top  : -74%;
-     left : 30%;
+     left : 33%;
     font-size : 24px;
     color : #30313A;
     font-weight : bold;
@@ -44,10 +44,8 @@ color : #222222;
 }
 
 .pt {
-
+    max-width: 100%;
     text-align: center;
-    /* margin : auto 4%; */
-    width : 90%;
     margin : auto;
  }
 
@@ -106,4 +104,30 @@ color : #222222;
     font-weight : bold;
     font-size : 12px;
     color : #52586A
+}
+
+@media only screen and (max-width : 1262px)  {
+
+    .pt {
+        flex-basis : 48%;
+        margin : 2%;
+    }
+
+    .ProgressBar {
+         
+        height : 220px;
+        margin : 0 auto;
+    }
+
+    
+     .AnalogData {
+         top : -73%;
+     }
+}
+
+@media only screen and (max-width : 660px)
+{
+    .pt {
+        flex-basis: 100%;
+    }
 }

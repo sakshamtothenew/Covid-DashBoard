@@ -55,24 +55,29 @@ const SpreadTrends = (props) => {
     const data = GraphData;
 
     return (
-
-        <Card>
+        <div className = {classes.SpreadTrend}>
+ <Card>
             <div>
                 <div className={classes.SpreadHeader}>
                     <h4>Spread Trends</h4>
-                    <div>
+                    <div className = {classes.btnDiv}>
                         {buttons}
                     </div>
                 </div>
-                <LineChart width={448} height={151} data={data}>
+                <div className = {classes.Graph}>
+                <LineChart width={448} height={155} data={data}>
                     <YAxis tick={{ fontSize: "12px" }} orientation="right" padding={{ bottom: 10 }} />
                     <Tooltip />
                     <Line type="monotone" dot={false} dataKey={graphType} stroke="#FF0019" strokeWidth={2} />
                     <XAxis dataKey="date" tick={{ fontSize: "12px" }} padding={{ right: 5 }} />
                 </LineChart>
+                </div>
+              
             </div>
 
         </Card>
+        </div>
+       
     )
 }
 

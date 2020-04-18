@@ -1,6 +1,5 @@
 .NewsFeed {
-   width : 490px;
-   margin-left : 2%;
+    flex-basis : 49%;
 }
 
 .Container {
@@ -27,12 +26,15 @@
 
 .NewsImage {
 
-    padding : 3.5%;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    flex-basis : 25%;
 }
 
 .newsButton {
-    position : relative ;
-     left : 50%;
+    align-self: flex-end;
+    justify-self: flex-end;
      width : 135px;
      height : 45px; 
      margin-top : 10%;
@@ -53,15 +55,32 @@
 
 .Content h2 {
 
-    font-size : 15px;
-    padding : 2% 0;
+    font-size : 14px;
     line-height:  25px;
 }
 .Content p {
-    font-size : 12px;
+    font-size : 11px;
 }
 .Content {
-  
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
     padding : 1% 2% 1% 2.5%;
     width : 100%;
+}
+
+@media only screen and (max-width : 1262px) {
+ 
+    .NewsFeed {
+        flex-basis: 49%;
+    }
+
+}
+
+@media only screen and (max-width : 930px) {
+
+    .NewsFeed {
+        flex-basis: 100%;
+        margin : auto;
+    }
 }

@@ -5,12 +5,11 @@ import DynamicStatDate from '../../components/DynamicStatData/DynamicStatData'
 import Country from '../../components/CountryData/CountryData'
 import NewsFeed from '../../components/NewsFeed/NewsFeed'
 import Map from '../../components/Map/Map'
-import classes from '../../App.module.css';
 import RecoveryBar from '../../components/RatioRecoveryMeter/RecoveryRatioProgressBar';
 import SpreadTrends from '../../components/SpreadTrends/SpreadTrends';
 import Tweets from '../../components/Tweets/Tweets';
 import Aux from '../../hoc/Aux/Aux';
-
+import classes from './Home.module.css'
 
 const Home = () => {
     return(

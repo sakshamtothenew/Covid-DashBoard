@@ -50,14 +50,18 @@ const DynamicStatData = (props) => {
 
         if (eachstate != "difference")
             return (
+                <div className = {classes.eachCard}>
+
                 <Card>
                     <div className={classes.dailyCasereport}>
                         <div>
                             <p>{eachstate} <img src={2 > 1 ? Up : Down} /></p>
                             <h3>{statData[eachstate]}</h3>
+
                         </div>
                         <div className={classes.Graph}>
                             {/* <img src={statData["difference"] >= 0 ? graph1 : greenGraph} /> */}
+
                             <AreaChart width={72} height={60} data={editedData}>
                                 <Tooltip viewBox={{ width: 100, height: 100 }} />
                                 <defs>
@@ -87,6 +91,8 @@ const DynamicStatData = (props) => {
                         </div>
                     </div>
                 </Card>
+
+                </div>
             )
     })
 
