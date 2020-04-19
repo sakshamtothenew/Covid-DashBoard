@@ -1,91 +1,74 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
-import classes from './NewsFeed.module.css'
+
 import Personimage from '../../assets/images/newsFeed.png'
+import classes from './NewsFeed.module.css'
 import Card from '../../hoc/Card/Card'
-import { data } from './Local_response'
+import {data} from './Local_response'
 const NewsFeed = (props) => {
 
-    const [newsArticles, setnewsArticles] = useState({ headline: "Stay home , stay safe this matter has to be of 60 chr ", description: "we'll keep you updated", ArticleLink: "", articleid: 0 })
-
-    // setnewsArticles({ headline: headline, description: description, ArticleLink: pageUrl })
-    useEffect(() => {
-        axios.get('http://newsapi.org/v2/top-headlines?q=COVID&country=in&apiKey=519fb8fba3fe442ab5bdda7c5a3042ef')
-            .then((Response) => {
-
-                console.log(Response.data)
-                const newsContent = { ...Response.data.articles[0] };
-                let headline;
-                let description;
-                if (newsContent.title == null)
-                    headline = "Stay Home , Stay safe , this matter has to be oof 60 ch"
-                else {
-                    if (newsContent.title.length > 60)
-                        headline = newsContent.title.slice(0, 60)
-                    else {
-                        headline = newsContent.title.slice(0, newsContent.title.length - 1)
-                    }
-                }
-
-                if (newsContent.description == null)
-                    description = "we'll keep you updated"
-                else {
-                    if (newsContent.description.length > 70)
-                        description = newsContent.description.slice(0, 70)
-                    else {
-                        description = newsContent.title.slice(0, newsContent.description.length - 1)
-                    }
-                }
-             
-                const pageUrl = newsContent.url;
-
-                setnewsArticles({ headline: headline, description: description, ArticleLink: pageUrl , articleid : 1 })
+    
+    const constants = {
+        HEADLINE: "stay home, stay safe",
+        DESCRIPTION: "we'll keep you updated",
+        TIMER: 60000,
+        URL: 'http://newsapi.org/v2/top-headlines?q=COVID&country=in&apiKey=519fb8fba3fe442ab5bdda7c5a3042ef',
+        HLIMIT: 60,
+        DLIMIT: 70
+    }
 
 
-
-        const interval = setInterval(() => {
-            console.log("this runs")
-            setnewsArticles((state) => {
-                console.log(state.articleid);
-                const newsContent = { ...Response.data.articles[state.articleid] };
-                let headline;
-                let description;
-                if (newsContent.title == null)
-                    headline = "Stay Home , Stay safe , this matter has to be oof 60 ch"
-                else {
-                    if (newsContent.title.length > 60)
-                        headline = newsContent.title.slice(0, 60)
-                    else {
-                        headline = newsContent.title.slice(0, newsContent.title.length - 1)
-                    }
-                }
-
-                if (newsContent.description == null)
-                    description = "we'll keep you updated"
-                else {
-                    if (newsContent.description.length > 70)
-                        description = newsContent.description.slice(0, 70)
-                    else {
-                        description = newsContent.title.slice(0, newsContent.description.length - 1)
-                    }
-                }
-
-                const pageUrl = newsContent.url;
-                let newsArticlesId;
-                if (state.articleid <= data.articles.length) {
-                    newsArticlesId = state.articleid + 1;
-                }
-                else {
-                    newsArticlesId = 0
-                }
-                return { headline: headline, description: description, ArticleLink: pageUrl, articleid: newsArticlesId }
-            })
-        }, 60000);
-        return () => clearInterval(interval);
+    const [newsArticles, setnewsArticles] = useState({
+        headline: constants.HEADLINE,
+        description: constants.DESCRIPTION,
+        ArticleLink: "",
+        articleid: 0
     })
+
+
+
+
+    useEffect(() => {
+        axios.get(constants.URL)
+            .then((Response) => {
+                updateNews(Response.data);
+
+                const interval = setInterval(() => {
+                    updateNews(Response.data)
+                }, constants.TIMER);
+
+                return () => clearInterval(interval);
+            })
 
     }, [])
 
+
+
+
+    const updateNews = (data) => {
+        setnewsArticles((state) => {
+            console.log(state.articleid);
+            const newsContent = { ...data.articles[state.articleid] };
+
+            const headline = newsContent.title != null ?
+                newsContent.title.length > constants.HLIMIT ? newsContent.title.slice(0, constants.HLIMIT) : newsContent.title
+                : constants.HEADLINE
+
+            const description = newsContent.description != null ?
+                newsContent.description.length > constants.DLIMIT ? newsContent.description.slice(0, constants.DLIMIT) : newsContent.description
+                : constants.DESCRIPTION
+
+            const pageUrl = newsContent.url;
+            let newsArticlesId;
+            if (state.articleid <= data.articles.length) {
+                newsArticlesId = state.articleid + 1;
+            }
+            else {
+                newsArticlesId = 0
+            }
+            return { headline: headline, description: description, ArticleLink: pageUrl, articleid: newsArticlesId }
+        })
+    }
 
 
 
@@ -96,7 +79,6 @@ const NewsFeed = (props) => {
                 <div className={classes.Container}>
                     <div className={classes.NewsImage}>
                         <img src={Personimage} alt="news icon" />
-
                     </div>
                     <div className={classes.Content}>
                         <h2>{newsArticles.headline}...</h2>
@@ -104,12 +86,11 @@ const NewsFeed = (props) => {
                         <button className={classes.newsButton}><a target="_blank" href={newsArticles.ArticleLink}>Read More..</a></button>
                     </div>
                 </div>
-
-
             </Card>
         </div>
     )
 }
+
 
 
 export default NewsFeed

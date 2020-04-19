@@ -22,7 +22,7 @@ const getCountryData = () => dispatch(actions.getCountryWiseData())
 
     chart: {
       backgroundColor: "#fbf6f6", 
-    height : 300,
+    height : 350,
      borderRadius : 8,
      width : 500
   },

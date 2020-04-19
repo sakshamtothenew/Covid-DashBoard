@@ -1,0 +1,35 @@
+.PageBody {
+
+   width : 90%;
+   margin : 2% auto;
+
+}
+
+.linkCard {
+    width: 80%;
+    margin : 2% auto;
+    background-color: #df7070;
+   padding : 2% 3%;
+    border-radius : 10px;
+}
+
+.linkCard:hover {
+    transition:  1s ease;
+    padding: 3% 4% ;
+    font-weight : 900;
+    box-shadow: 0px 5px 20px rgb(100, 230, 139);
+}
+
+.link {
+     color : #fff;
+    text-decoration: none;
+    font-size : 18px;
+    font-weight : bold;
+}
+
+.Video {
+    width : 80%;
+    margin : 2% auto;
+    display : flex;
+    justify-content: center;
+}

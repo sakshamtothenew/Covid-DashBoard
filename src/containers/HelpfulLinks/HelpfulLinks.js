@@ -1,10 +1,31 @@
 import React from 'react'
-
+import classes from './HelpfulLinks.module.css'
+import { data } from './helpfulLinkStatic'
 const HelpfulLinks = (props) => {
 
+    const links = data.map((eachLink) => {
+
+        return (
+            <div className={classes.linkCard}>
+                <a className={classes.link} href={eachLink.link}>{eachLink.heading}</a>
+            </div>
+        )
+    })
+
     return (
-        <div>this is helpful link</div>
+        <div className={classes.PageBody}>
+           <div className = {classes.linkSection}>
+           {links}
+               </div> 
+            <div className={classes.Video}>
+                <iframe width="800" height="315" src="https://www.youtube.com/embed/Trt7VIMV7jU"
+                    frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></iframe>
+            </div>
+
+        </div>
     )
+
 }
 
 export default HelpfulLinks;

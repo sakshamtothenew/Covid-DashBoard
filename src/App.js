@@ -23,12 +23,16 @@ import Aux from './hoc/Aux/Aux';
 function App() {
 
   let route = (
-     <Switch>
-  <Route path='/' exact component={Home} />
-      <Route path='/Faq' component={Faq} />
-      <Route path='/helpfulLink' component={HelpfulLinks} />
+    <div>
       <Redirect to='/' />
-     </Switch>
+      <Switch>
+        <Route path='/' exact component={Home} />
+        <Route path='/Faq' component={Faq} />
+        <Route path='/helpfulLink' component={HelpfulLinks} />
+        <Redirect to='/' />
+      </Switch>
+    </div>
+
   )
   return (
     <Layout>

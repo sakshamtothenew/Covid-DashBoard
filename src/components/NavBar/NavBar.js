@@ -13,7 +13,7 @@ class NavBar extends Component {
                    <Logo />
                </div>
                <div className = {classes.Navlink}>
-               <NavLinks  exact link = '/'>home </NavLinks>
+               <NavLinks  exact link = '/'>Home </NavLinks>
                 <NavLinks link = '/Faq'>Faq</NavLinks>
                 <NavLinks link = '/helpfulLink'>HelpFul links</NavLinks>
                </div>

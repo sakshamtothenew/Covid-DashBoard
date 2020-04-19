@@ -29,7 +29,8 @@
 
 .Question h2 {
     padding : 3% 5%;
-    flex-basis : 75%   
+    flex-basis : 75%;   
+    font-size : 1.5rem
 }
 
 .hide {
@@ -65,3 +66,17 @@ color : #fff;
         padding : 3% 5%;
     }
 }
+
+.show::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  .show::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 5px;
+  }
+
+  .show::-webkit-scrollbar-thumb {
+    background-color: #ed757b; 
+    border-radius: 10px;
+  }
