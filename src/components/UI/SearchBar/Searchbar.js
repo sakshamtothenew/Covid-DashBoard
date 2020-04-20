@@ -1,6 +1,5 @@
 import React from 'react'
 import classes from './Searchbar.module.css'
-import { destroyObjectProperties } from 'highcharts'
 
 
 const Searchbar = (props) => {

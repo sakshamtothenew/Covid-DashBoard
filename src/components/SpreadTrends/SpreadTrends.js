@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import {
-    LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend,
+    LineChart, Line, XAxis, YAxis ,Tooltip,
 } from 'recharts';
 import Card from '../../hoc/Card/Card'
 import classes from './SpreadTrends.module.css'
@@ -43,11 +43,11 @@ const SpreadTrends = (props) => {
 
     }
 
-    const buttons = buttonState.map((eachButton) => {
+    const buttons = buttonState.map((eachButton , i) => {
         let id = eachButton.id
 
         return (
-            <button className={eachButton.flag ? classes.SelectedBtn : classes.Btn}
+            <button key = {i}className={eachButton.flag ? classes.SelectedBtn : classes.Btn}
                 onClick={() => graphChangeHandler(id)}>{eachButton.name}</button>
         )
     })

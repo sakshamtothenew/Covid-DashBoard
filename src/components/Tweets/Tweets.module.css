@@ -11,7 +11,7 @@
 
 .InnerTweetBox {
 
-    height : 410px;
+    height :  375px;
     overflow-y : scroll;
     padding : 7% 0 0 0;
 }
@@ -39,19 +39,37 @@
       padding : 0;
       align-self : flex-start ;
       margin-top: 2%;
-
+      
     }
 
     .InnerTweetBox {
-      height : 350px;
+      height : 337px;
     }
 
   }
+  @media only screen and (max-width : 1030px){
+    .InnerTweetBox {
+      height : 335px;
+    }
+  }
+  @media only screen and (max-width : 960px){
+    .InnerTweetBox {
+      height : 330px;
+    }
+  }
+  @media only screen and (max-width : 850px){
+    .InnerTweetBox {
+      height : 325px;
+    }
+  }
+
 
   @media only screen and (max-width : 660px) {
 
     .OuterTweetsBox {
-      flex-basis: 100%;
+       
+       width :  100%;
+       margin : 2%  auto;
       align-self: stretch;
     }
   }

@@ -1,13 +1,13 @@
 export {
-    getCountryWiseData , 
+    getCountryWiseData,
     updateSearchedCountries
 } from './CountryWise'
 
 export {
-getAllStats
+    getAllStats
 }
-from './TotalStat'
+    from './TotalStat'
 
 export {
- getGraphData
+    getGraphData
 } from './spreadTrends'

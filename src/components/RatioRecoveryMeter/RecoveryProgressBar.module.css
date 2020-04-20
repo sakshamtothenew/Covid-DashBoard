@@ -110,7 +110,7 @@ color : #222222;
 
     .pt {
         flex-basis : 48%;
-        margin : 2%;
+        margin : 2% 1%;
     }
 
     .ProgressBar {

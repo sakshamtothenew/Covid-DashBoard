@@ -21,7 +21,7 @@ export const autoupdateStat = () => {
                     console.log("auto update called")
                     dispatch(setAllStats(Response));
                 })
-        }, 5* 60000)
+        }, 5 * 60000)
 
     }
 }

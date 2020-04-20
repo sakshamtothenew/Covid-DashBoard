@@ -23,12 +23,14 @@
 .CountryInfo {
    display : flex;
    padding : 2% ;  
+   flex-basis: 70%;
    align-items: center;
 
 }
 
 .CountryInfo h4 {
    margin-left : 2%;
+   max-width : 50%;
 }
 
 .eachOuterCard {
@@ -82,8 +84,9 @@
   @media only screen and (max-width : 930px) {
 
     .CountryDiv {
-        margin : 3% auto;
-        width : 500px;
+        margin : 2% auto 7.5% auto;
+        width : 100%;
+        
 
     }
 

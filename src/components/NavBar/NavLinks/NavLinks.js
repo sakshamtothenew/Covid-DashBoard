@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import classes from './NavLink.module.css'
 import {NavLink} from 'react-router-dom'
 const NavLinks = (props) => {

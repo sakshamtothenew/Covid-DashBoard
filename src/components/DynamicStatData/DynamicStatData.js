@@ -1,13 +1,10 @@
-import React, { useState, useEffect } from 'react'
-import axios from 'axios'
+import React, { useEffect } from 'react'
 import Card from '../../hoc/Card/Card'
 import classes from './DynamicStateData.module.css';
-import graph1 from '../../assets/images/gp.png'
 import Up from '../../assets/images/Up.png'
 import Down from '../../assets/images/Down.png'
-import greenGraph from '../../assets/images/greenGraph.png'
 import { useSelector, useDispatch } from 'react-redux'
-import { Area, AreaChart, Tooltip, linearGradient, XAxis } from 'recharts'
+import { Area, AreaChart, Tooltip, XAxis } from 'recharts'
 import * as actions from '../../store/actions/index'
 const DynamicStatData = (props) => {
 
@@ -46,11 +43,11 @@ const DynamicStatData = (props) => {
     }, [])
 
     const renderState = Object.keys(statData)
-    const dailyCasereport = renderState.map((eachstate) => {
+    const dailyCasereport = renderState.map((eachstate , i) => {
 
         if (eachstate != "difference")
             return (
-                <div className = {classes.eachCard}>
+                <div key = {i} className = {classes.eachCard}>
 
                 <Card>
                     <div className={classes.dailyCasereport}>

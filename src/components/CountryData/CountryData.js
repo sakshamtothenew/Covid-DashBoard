@@ -1,23 +1,22 @@
-import axios from 'axios'
-import React, { useEffect, useState } from 'react'
+
+import React, { useEffect } from 'react'
 import Card from '../../hoc/Card/Card'
 import classes from './CountryData.module.css'
 import Searchbar from '../UI/SearchBar/Searchbar'
 import down from '../../assets/images/Down.png'
 import Up from '../../assets/images/Up.png'
-import {useSelector , useDispatch } from 'react-redux'
-import  * as actions from '../../store/actions/index'
+import { useSelector, useDispatch } from 'react-redux'
+import * as actions from '../../store/actions/index'
 const Country = () => {
 
     const SearchedCountries = useSelector(state => state.countryWiseData.SearchedCountries)
     const AllCountries = useSelector(state => state.countryWiseData.AllCountries)
     const dispatch = useDispatch();
 
-    const getCountryData = () => dispatch(actions.getCountryWiseData())
+    const getCountryData = () =>   dispatch(actions.getCountryWiseData())
     const updateSearchedCountries = (SearchedCountries) => dispatch(actions.updateSearchedCountries(SearchedCountries))
     useEffect(() => {
-        console.log("this Countrydata called")
-                getCountryData()
+        getCountryData()
     }, [])
 
 
@@ -40,12 +39,12 @@ const Country = () => {
 
             return eachCountry.countryName.includes(searchedValue);
         })
-       updateSearchedCountries(filteredCountries);
+        updateSearchedCountries(filteredCountries);
 
     }
-    const CountryWiseData = SearchedCountries.map((eachCountry) => {
+    const CountryWiseData = SearchedCountries.map((eachCountry, i) => {
         return (
-            <div className={classes.eachOuterCard}>
+            <div key={i} className={classes.eachOuterCard}>
                 <Card>
 
                     <div className={classes.eachCard}>
@@ -61,8 +60,8 @@ const Country = () => {
                             </div>
 
                         </div>
-                        <div className = {classes.Arrows}>
-                            <img src = {eachCountry.todayCases>0 ? Up : down} />
+                        <div className={classes.Arrows}>
+                            <img src={eachCountry.todayCases > 0 ? Up : down} />
                         </div>
                     </div>
 

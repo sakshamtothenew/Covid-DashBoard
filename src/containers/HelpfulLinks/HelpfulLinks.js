@@ -7,7 +7,7 @@ const HelpfulLinks = (props) => {
 
         return (
             <div className={classes.linkCard}>
-                <a className={classes.link} href={eachLink.link}>{eachLink.heading}</a>
+                <a className={classes.link}  href={eachLink.link} target = "_blank">{eachLink.heading}</a>
             </div>
         )
     })
