@@ -95,3 +95,26 @@
         font-size: 11px;
     }
 }
+
+@media only screen and (max-width : 380px)
+{
+    .Graph {
+        zoom : 40%;
+    }
+    .SelectedBtn {
+        height : 20px;
+        width  : 40px;
+        font-size: 8px;
+    }
+    .Btn {
+        height : 20px;
+        width : 40px;
+        font-size: 8px;
+    }
+} 
+
+@media only screen and (min-width : 1300px) {
+    .SpreadTrend {
+        flex-basis: 49%;
+    }
+}

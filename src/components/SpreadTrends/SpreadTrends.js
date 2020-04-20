@@ -27,7 +27,7 @@ const SpreadTrends = (props) => {
 
     const graphChangeHandler = (id) => {
         const btnState = [...buttonState];
-        console.log(btnState);
+      
         for (let i in buttonState) {
             if (buttonState[i].id == id) {
                 setGraphType(buttonState[i].name)

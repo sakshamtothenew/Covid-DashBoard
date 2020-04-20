@@ -47,7 +47,7 @@ const NewsFeed = (props) => {
 
     const updateNews = (data) => {
         setnewsArticles((state) => {
-            console.log(state.articleid);
+           
             const newsContent = { ...data.articles[state.articleid] };
 
             const headline = newsContent.title != null ?

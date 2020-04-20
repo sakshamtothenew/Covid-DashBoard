@@ -17,7 +17,7 @@ const DynamicStatData = (props) => {
 
     }
     const timelineData = useSelector(state => state.SpreadTrends.GraphData);
-
+  
     const slicedData = timelineData.slice(-10)
 
     const editedData = slicedData.map((o) => {
@@ -30,9 +30,9 @@ const DynamicStatData = (props) => {
             ActiveCases: o.Affected - (o.Recovered + o.Deaths)
         }
     })
-    console.log(editedData);
-    console.log(slicedData);
-
+   
+  
+     
     const dispatch = useDispatch();
 
     const getAllStats = () => dispatch(actions.getAllStats());
@@ -44,15 +44,19 @@ const DynamicStatData = (props) => {
 
     const renderState = Object.keys(statData)
     const dailyCasereport = renderState.map((eachstate , i) => {
+            const lastDateData ={ ...editedData[editedData.length -1]}
+            const  lastDateData_2 = {...editedData[editedData.length -2]}
+            const lastDateData_3 = {...editedData[editedData.length -3]}
+            const  arrowstatus = (lastDateData[eachstate] - lastDateData_2[eachstate]) - (lastDateData_2[eachstate]-lastDateData_3[eachstate])
 
-        if (eachstate != "difference")
+        if (eachstate !== "difference")
             return (
                 <div key = {i} className = {classes.eachCard}>
 
                 <Card>
                     <div className={classes.dailyCasereport}>
                         <div>
-                            <p>{eachstate} <img src={2 > 1 ? Up : Down} /></p>
+                            <p>{eachstate} <img src={arrowstatus > 0 ? Up : Down} /></p>
                             <h3>{statData[eachstate]}</h3>
 
                         </div>

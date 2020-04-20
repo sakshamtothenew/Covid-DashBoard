@@ -3,10 +3,10 @@ import classes from './HelpfulLinks.module.css'
 import { data } from './helpfulLinkStatic'
 const HelpfulLinks = (props) => {
 
-    const links = data.map((eachLink) => {
+    const links = data.map((eachLink , i) => {
 
         return (
-            <div className={classes.linkCard}>
+            <div key = {i} className={classes.linkCard}>
                 <a className={classes.link}  href={eachLink.link} target = "_blank">{eachLink.heading}</a>
             </div>
         )
@@ -20,7 +20,7 @@ const HelpfulLinks = (props) => {
             <div className={classes.Video}>
                 <iframe width="800" height="315" src="https://www.youtube.com/embed/Trt7VIMV7jU"
                     frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen></iframe>
+                    allowFullScreen></iframe>
             </div>
 
         </div>
