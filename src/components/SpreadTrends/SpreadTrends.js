@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useCallback } from 'react'
 import {
     LineChart, Line, XAxis, YAxis ,Tooltip,
 } from 'recharts';
@@ -12,7 +12,7 @@ const SpreadTrends = (props) => {
 
 
     const dispatch = useDispatch();
-    const  getGraphData  = () => dispatch(actions.getGraphData())
+    const  getGraphData  = useCallback(() => dispatch(actions.getGraphData()) , [dispatch])
     const GraphData = useSelector(state => state.SpreadTrends.GraphData)
     const [graphType, setGraphType] = useState("Affected")
 
@@ -23,7 +23,7 @@ const SpreadTrends = (props) => {
 
    useEffect(() => {
     getGraphData();
-   } , [])
+   } , [getGraphData])
 
     const graphChangeHandler = (id) => {
         const btnState = [...buttonState];

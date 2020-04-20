@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useCallback } from 'react'
 import Card from '../../hoc/Card/Card'
 import classes from './DynamicStateData.module.css';
 import Up from '../../assets/images/Up.png'
@@ -35,12 +35,12 @@ const DynamicStatData = (props) => {
      
     const dispatch = useDispatch();
 
-    const getAllStats = () => dispatch(actions.getAllStats());
+    const getAllStats = useCallback(() => dispatch(actions.getAllStats()) , [dispatch]);
 
     useEffect(() => {
         getAllStats()
 
-    }, [])
+    }, [getAllStats])
 
     const renderState = Object.keys(statData)
     const dailyCasereport = renderState.map((eachstate , i) => {

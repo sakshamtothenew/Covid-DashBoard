@@ -1,5 +1,5 @@
 
-import React, { useEffect } from 'react'
+import React, { useEffect, useCallback } from 'react'
 import Card from '../../hoc/Card/Card'
 import classes from './CountryData.module.css'
 import Searchbar from '../UI/SearchBar/Searchbar'
@@ -13,11 +13,11 @@ const Country = () => {
     const AllCountries = useSelector(state => state.countryWiseData.AllCountries)
     const dispatch = useDispatch();
 
-    const getCountryData = () =>   dispatch(actions.getCountryWiseData())
+    const getCountryData = useCallback(() =>   dispatch(actions.getCountryWiseData()) , [dispatch])
     const updateSearchedCountries = (SearchedCountries) => dispatch(actions.updateSearchedCountries(SearchedCountries))
     useEffect(() => {
         getCountryData()
-    }, [])
+    }, [getCountryData])
 
 
     function titleCase(str) {
