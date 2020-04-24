@@ -1,6 +1,5 @@
 import React from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom'
-
 import Layout from './hoc/Layout/Layout';
 import Home from './containers/Home/Home'
 import Faq from './containers/Faq/Faq'

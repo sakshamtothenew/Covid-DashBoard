@@ -78,7 +78,7 @@ color : #222222;
 
     fill : transparent;
      stroke-width : 5px;
-     stroke : rgba(111, 214, 136, 0.918);
+     /* stroke : rgba(111, 214, 136, 0.918); */
 
       stroke-linecap: round;
    

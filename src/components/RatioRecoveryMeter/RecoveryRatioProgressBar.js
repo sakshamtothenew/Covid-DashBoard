@@ -19,8 +19,14 @@ const RecoveryBar = (props) => {
                 <h4>Ratio of Recovery</h4>
                 <div className={classes.ProgressBar}>
                     <svg className={classes.ProgressSvg}>
+                        <defs>
+                            <linearGradient id="linear" x1="0%" y1="0%" x2="100%" y2="0%">
+                                <stop offset="10%" stopColor="#06BA90" />
+                                <stop offset="90%" stopColor="#BAFAEB" />
+                            </linearGradient>
+                        </defs>
                         <circle className={classes.ProgressBar_path} cx="50%" cy="50%" r="90px"></circle>
-                        <circle className={classes.ProgressBar_thumb} style={{ strokeDashoffset: percent }}
+                        <circle className={classes.ProgressBar_thumb} style={{ strokeDashoffset: percent , stroke : "url('#linear')" }}
                             cx="50%" cy="50%" r="90px"></circle>
                     </svg>
                     <div className={classes.AnalogData}>{percentage}%</div>

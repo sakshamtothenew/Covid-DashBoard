@@ -1,33 +1,32 @@
 import React, { useEffect, useState, useCallback } from 'react'
 import {
-    LineChart, Line, XAxis, YAxis ,Tooltip,
+    LineChart, Line, XAxis, YAxis, Tooltip,
 } from 'recharts';
 import Card from '../../hoc/Card/Card'
 import classes from './SpreadTrends.module.css'
 import * as actions from '../../store/actions/index'
-import axios from 'axios'
 import { useDispatch, useSelector } from 'react-redux';
 
 const SpreadTrends = (props) => {
 
 
     const dispatch = useDispatch();
-    const  getGraphData  = useCallback(() => dispatch(actions.getGraphData()) , [dispatch])
+    const getGraphData = useCallback(() => dispatch(actions.getGraphData()), [dispatch])
     const GraphData = useSelector(state => state.SpreadTrends.GraphData)
     const [graphType, setGraphType] = useState("Affected")
 
-     
+
     const [buttonState, setButtonsState] = useState([{ id: 1, flag: true, name: "Affected" },
     { id: 2, flag: false, name: "Recovered" },
     { id: 3, flag: false, name: "Deaths" }])
 
-   useEffect(() => {
-    getGraphData();
-   } , [getGraphData])
+    useEffect(() => {
+        getGraphData();
+    }, [getGraphData])
 
     const graphChangeHandler = (id) => {
         const btnState = [...buttonState];
-      
+
         for (let i in buttonState) {
             if (buttonState[i].id == id) {
                 setGraphType(buttonState[i].name)
@@ -43,11 +42,11 @@ const SpreadTrends = (props) => {
 
     }
 
-    const buttons = buttonState.map((eachButton , i) => {
+    const buttons = buttonState.map((eachButton, i) => {
         let id = eachButton.id
 
         return (
-            <button key = {i}className={eachButton.flag ? classes.SelectedBtn : classes.Btn}
+            <button key={i} className={eachButton.flag ? classes.SelectedBtn : classes.Btn}
                 onClick={() => graphChangeHandler(id)}>{eachButton.name}</button>
         )
     })
@@ -55,29 +54,29 @@ const SpreadTrends = (props) => {
     const data = GraphData;
 
     return (
-        <div className = {classes.SpreadTrend}>
- <Card>
-            <div>
-                <div className={classes.SpreadHeader}>
-                    <h4>Spread Trends</h4>
-                    <div className = {classes.btnDiv}>
-                        {buttons}
+        <div className={classes.SpreadTrend}>
+            <Card>
+                <div>
+                    <div className={classes.SpreadHeader}>
+                        <h4>Spread Trends</h4>
+                        <div className={classes.btnDiv}>
+                            {buttons}
+                        </div>
                     </div>
-                </div>
-                <div className = {classes.Graph}>
-                <LineChart width={448} height={155} data={data}>
-                    <YAxis tick={{ fontSize: "12px" }} orientation="right" padding={{ bottom: 10 }} />
-                    <Tooltip />
-                    <Line type="monotone" dot={false} dataKey={graphType} stroke="#FF0019" strokeWidth={2} />
-                    <XAxis dataKey="date" tick={{ fontSize: "12px" }} padding={{ right: 5 }} />
-                </LineChart>
-                </div>
-              
-            </div>
+                    <div className={classes.Graph}>
+                        <LineChart width={448} height={155} data={data}>
+                            <YAxis tick={{ fontSize: "12px" }} orientation="right" padding={{ bottom: 10 }} />
+                            <Tooltip />
+                            <Line type="monotone" dot={false} dataKey={graphType} stroke="#FF0019" strokeWidth={2} />
+                            <XAxis dataKey="date" tick={{ fontSize: "12px" }} padding={{ right: 5 }} />
+                        </LineChart>
+                    </div>
 
-        </Card>
+                </div>
+
+            </Card>
         </div>
-       
+
     )
 }
 

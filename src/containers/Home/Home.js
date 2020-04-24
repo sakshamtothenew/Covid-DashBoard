@@ -1,6 +1,4 @@
 import React from 'react'
-
-
 import DynamicStatDate from '../../components/DynamicStatData/DynamicStatData'
 import Country from '../../components/CountryData/CountryData'
 import NewsFeed from '../../components/NewsFeed/NewsFeed'
